@@ -1,5 +1,4 @@
 import axios from 'axios';
-// test
 
 export const setAuthToken = token => {
     if (token) {
