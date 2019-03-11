@@ -4,6 +4,19 @@ import React from 'react';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {username: "", password: ""};
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleUpdate(field) {
+        return (e) => {
+
+        };
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.login
     }
 
     render () {
@@ -16,7 +29,27 @@ class NavBar extends React.Component {
                     </div>
 
                     <div className="nb_linkWrapper">
-                        loggedIn ? profile/signout : search?
+                        <label className="nb_userLabel">
+                            login
+                            <input 
+                                className="nb_userInput"
+                                type="text"
+                                placeholder="login"
+                            >
+                            </input>
+                        </label>
+
+                        <label className="nb_passLabel">
+                            password
+                            <input 
+                                className="nb_passInput"
+                                type="password"
+                                placeholder="password"
+                            >
+                            </input>
+                        </label>
+
+                        <button onClick={this.handleSubmit}>login</button>
                     </div>
                 </nav>
             </div>
