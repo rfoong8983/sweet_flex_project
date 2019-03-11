@@ -1,10 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import NavBarContainer from './components/navbar_container';
 
 const App = () => (
-    <div>
+    <div className="appWrapper">
         <Switch>
-            <Route path="/" component={<h1>Hello from App.js Route tag</h1>}/>
+            <Route path="/" 
+                component={NavBarContainer}
+            />
         </Switch>
     </div>
 )

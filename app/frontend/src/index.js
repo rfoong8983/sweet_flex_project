@@ -1,12 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Root from './Root';
+import configureStore from './store/store';
+import './stylesheets/application.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// parse user's session token
+import jwt_decode from 'jwt-decode';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// session utility funct to store / remove token in request header
+import { setAuthToken } from './util/session_api_util';
+import { logout } from './actions/session_actions';
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    let store;
+
+    // if a returning user has a stored session token
+    if (localStorage.jwtToken) {
+
+        // set token as a common header for axios requests
+        setAuthToken(localStorage.jwtToken);
+
+        // decode token to obtain the user's info
+        const decodedUser = jwt_decode(localStorage.jwtToken);
+
+        // create preconfigured state and add to store
+        const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
+        store = configureStore(preloadedState);
+
+        const currentTime = Date.now() / 1000;
+        // currentTime: time since Jan 1, 1970
+        // exp: the time from which the webtoken should not be accepted
+        if (decodedUser.exp < currentTime) {
+            store.dispatch(logout());
+            window.location.href = '/login';
+        } else {
+            // create store if first time user
+            store = configureStore({});
+        }
+    }
+
+    // take this out once connected with token above
+    store = configureStore({});
+
+    const root = document.getElementById('root');
+    ReactDOM.render(<Root store={store} />, root);
+});
