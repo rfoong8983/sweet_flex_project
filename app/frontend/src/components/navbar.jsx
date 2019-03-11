@@ -4,19 +4,41 @@ import React from 'react';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: "", password: ""};
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {username: "", password: ""};   
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignup = this.handleSignup.bind(this);  
+        this.handleLogout = this.handleLogout.bind(this);   
     }
 
     handleUpdate(field) {
+        // debugger
         return (e) => {
-
+            this.setState({[field]: e.currentTarget.value});
         };
     }
 
-    handleSubmit(e) {
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     if (this.props.formType === 'login') {
+    //         this.props.login(this.state);
+    //     } else {
+    //         this.props.signup(this.state);
+    //     }
+    // }
+
+    handleLogin(e) {
         e.preventDefault();
-        this.props.login
+        this.props.login(this.state);
+    }
+
+    handleSignup(e) {
+        e.preventDefault();
+        this.props.signup(this.state);
+    }
+
+    handleLogout(e) {
+        e.preventDefault();
+        this.props.logout();
     }
 
     render () {
@@ -34,7 +56,8 @@ class NavBar extends React.Component {
                             <input 
                                 className="nb_userInput"
                                 type="text"
-                                placeholder="login"
+                                placeholder="username"
+                                onChange={this.handleUpdate('username')}
                             >
                             </input>
                         </label>
@@ -45,11 +68,39 @@ class NavBar extends React.Component {
                                 className="nb_passInput"
                                 type="password"
                                 placeholder="password"
+                                onChange={this.handleUpdate('username')}
                             >
                             </input>
                         </label>
 
-                        <button onClick={this.handleSubmit}>login</button>
+                        <button onClick={this.handleLogin}>login</button>
+
+                        <br></br><br></br>
+
+                        <label className="nb_userLabel">
+                            login
+                            <input
+                                className="nb_userInput"
+                                type="text"
+                                placeholder="username"
+                                onChange={this.handleUpdate('username')}
+                            >
+                            </input>
+                        </label>
+
+                        <label className="nb_passLabel">
+                            password
+                            <input
+                                className="nb_passInput"
+                                type="password"
+                                placeholder="password"
+                                onChange={this.handleUpdate('password')}
+                            >
+                            </input>
+                        </label>
+
+                        <button onClick={this.handleSignup}>signup</button>
+                        <button onClick={this.handleLogout}>log me out</button>
                     </div>
                 </nav>
             </div>

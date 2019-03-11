@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
-import { login } from '../actions/session_actions';
+import { login, signup, logout } from '../actions/session_actions';
 import NavBar from './navbar';
 
 const msp = state => (
     {
-        loggedIn: state.session.isAuthenticated,
-        login: (user) => dispatchEvent(login(user)),
-        signup: (user) => dispatchEvent(signup(user))
+        loggedIn: state.session.isAuthenticated
     }
 );
 
-export default connect(msp)(NavBar);
+const mdp = dispatch => (
+    {
+        login: (user) => dispatch(login(user)),
+        signup: (user) => dispatch(signup(user)),
+        logout: () => dispatch(logout())
+    }
+);
+
+export default connect(msp, mdp)(NavBar);

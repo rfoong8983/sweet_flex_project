@@ -18,7 +18,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
         id: req.user.id,
         username: req.user.username,
     });
-})
+});
   
 
 router.post('/register', (req, res) => {

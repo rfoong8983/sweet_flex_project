@@ -22,12 +22,12 @@ module.exports = function validateRegisterInput(data) {
     if (!Validator.isLength(data.password, {min: 6, max: 30})){
         errors.password = 'Password must be at least 6 chars';
     }
-    if (Validator.isEmpty(data.password2)){
-        errors.password2 = 'Confirm Password field is required';
-    }
-    if (!Validator.equals(data.password, data.password2)){
-        errors.password2 = 'Passwords must match';
-    }
+    // if (Validator.isEmpty(data.password2)){
+    //     errors.password2 = 'Confirm Password field is required';
+    // }
+    // if (!Validator.equals(data.password, data.password2)){
+    //     errors.password2 = 'Passwords must match';
+    // }
 
     return {
         errors,
