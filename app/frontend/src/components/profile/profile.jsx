@@ -1,13 +1,22 @@
 import React from 'react';
 
 class Profile extends React.Component {
-    constructor(){
+    constructor(props){
+        super(props);
         
     }
 
     render(){
+
+        // debugger
         return( 
-            <h2>Welcome </h2>
+            <div className="profile-page-container">
+                <div className="history">
+                    <div className="rows">
+
+                    </div>
+                </div>
+            </div>
         )
     }
 }
