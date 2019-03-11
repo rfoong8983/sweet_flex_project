@@ -19,11 +19,6 @@ const sessionsReducer = (oldState=initialState, action) => {
                 isAuthenticated: !!action.currentUser,
                 user: action.user
             };
-        case RECEIVE_USER_SIGN_IN:
-            return {
-                ...oldState,
-                isSignedIn: true
-            };
         case RECEIVE_USER_LOGOUT:
             return {
                 isAuthenticated: false,
