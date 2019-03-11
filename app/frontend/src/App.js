@@ -4,11 +4,7 @@ import NavBarContainer from './components/navbar_container';
 
 const App = () => (
     <div className="appWrapper">
-        <Switch>
-            <Route path="/" 
-                component={NavBarContainer}
-            />
-        </Switch>
+        <NavBarContainer />
     </div>
 )
 

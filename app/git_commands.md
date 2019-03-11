@@ -11,13 +11,10 @@
 1. create a new branch
  * git checkout -b `branch name`
  * -b creates a new branch, without -b switches to branch of that name
-2. add and commit
-3. git checkout master
- * switch to the master branch
-4. git pull origin master 
- * pull the most recent master branch to the local repository
-5. git checkout `branch name`
- * switch back to the feature's branch
-6. git merge master
- * merge latest master into your branch's code
-7. git push origin add-address
+2. when ready to be merged in
+ * talk to everyone first
+ * https://stackoverflow.com/questions/5601931/what-is-the-best-and-safest-way-to-merge-a-git-branch-into-master
+ * git checkout master
+ * git pull origin master -- (updates your local master to the remote master, aka master in repo)
+ * git merge `branch name` -- (merge your branch into local master)
+ * git push origin master -- (update the remote master to your local master's state)
