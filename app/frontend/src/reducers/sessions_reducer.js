@@ -17,7 +17,7 @@ const sessionsReducer = (oldState=initialState, action) => {
             return {
                 ...oldState,
                 isAuthenticated: !!action.currentUser,
-                user: action.user
+                user: action.currentUser
             };
         case RECEIVE_USER_LOGOUT:
             return {
