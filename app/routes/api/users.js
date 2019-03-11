@@ -6,8 +6,8 @@ const keys = require('../../config/keys');
 const passport = require('passport')
 const User = require('../../models/User');
 
-// const validateRegisterInput = require('../../validation/register');
-// const validateLoginInput = require('../../validation/login');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 
 
@@ -23,10 +23,10 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 router.post('/register', (req, res) => {
 
-    // const {errors, isValid} = validateRegisterInput(req.body);
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
+    const {errors, isValid} = validateRegisterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     User.findOne({username: req.body.username})
         .then(user => {
@@ -61,11 +61,11 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    // const {errors, isValid} = validateLoginInput(req.body);
+    const {errors, isValid} = validateLoginInput(req.body);
     
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     const username = req.body.username;
     const password = req.body.password;
