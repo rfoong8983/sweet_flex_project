@@ -4,7 +4,8 @@ import Profile from './profile';
 
 const msp = state => (
     {
-        loggedIn: state.session.isAuthenticated
+        loggedIn: state.session.isAuthenticated,
+        currentUser: state.session.currentUser
     }
 );
 

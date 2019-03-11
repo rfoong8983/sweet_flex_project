@@ -1,9 +1,13 @@
 import React from 'react';
 
 class Profile extends React.Component {
+    constructor(){
+        
+    }
+
     render(){
         return( 
-            <h2>This is the profile page</h2>
+            <h2>Welcome </h2>
         )
     }
 }

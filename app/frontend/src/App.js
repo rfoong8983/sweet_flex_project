@@ -8,7 +8,7 @@ const App = () => (
     <div className="appWrapper">
       <NavBarContainer />
         <Switch>  
-          <Authroute exact path="/profile" component={ProfileContainer}/>
+          <Protectedroute exact path="/profile" component={ProfileContainer}/>
         </Switch>
     </div>
 )

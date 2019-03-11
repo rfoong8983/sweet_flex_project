@@ -11,13 +11,12 @@ const initialState = {
 
 const sessionsReducer = (oldState=initialState, action) => {
     Object.freeze(oldState);
-
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
             return {
                 ...oldState,
                 isAuthenticated: !!action.currentUser,
-                user: action.user
+                user: action.currentUser
             };
         case RECEIVE_USER_LOGOUT:
             return {
