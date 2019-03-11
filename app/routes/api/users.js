@@ -18,7 +18,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
         id: req.user.id,
         username: req.user.username,
     });
-})
+});
   
 
 router.post('/register', (req, res) => {
@@ -44,14 +44,19 @@ router.post('/register', (req, res) => {
                       newUser.password = hash;
                       newUser.save()
                         .then(user => {
-                            const payload = { id: user.id, name: user.name };
+                            const payload = { id: user.id, name: user.username };
             
-                            jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
-                            res.json({
-                                success: true,
-                                token: "Bearer " + token
-                            });
-                            });
+                            jwt.sign(
+                                payload, 
+                                keys.secretOrKey, 
+                                { expiresIn: 3600 }, 
+                                (err, token) => {
+                                    res.json({
+                                        success: true,
+                                        token: "Bearer " + token
+                                    });
+                                }
+                            );
                         })
                         .catch(err => console.log(err));
                     })

@@ -1,5 +1,3 @@
-// this is the main backend file
-
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
