@@ -3,7 +3,7 @@ const validText = require('./valid-text');
 
 module.exports = function validateSearchInput(data) {
   let errors = {};
-  data.searchInput = validText(data.searchInput) ? data.validateSearchInput : "";
+  data.searchInput = validText(data.searchInput) ? data.searchInput : "";
 
   if (Validator.isEmpty(data.searchInput)) {
     errors.searchInput = "Search Input required";
