@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme",
   "dependencies": {
-    "proxy": "^0.2.4"
+    "proxy": "^0.2.4",
+    "serve": "^10.1.2"
   }
 }
