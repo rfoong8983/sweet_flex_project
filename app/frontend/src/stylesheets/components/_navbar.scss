@@ -3,23 +3,48 @@
 	width: inherit;
 }
 
-.appWrapper {
-    height: inherit;
-    width: inherit;
-    // background-image: linear-gradient(-135deg, #f4976c, #fbe8a6); // dark
-    background-image: linear-gradient(180deg, #de6161, #2657eb); // sunset
-// background-image: linear-gradient(0deg, #a8edea, #fed6e3); // winter pink
-// background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); // winter light
-// background-image: linear-gradient(to right, #434343 0%, black 100%);
-// background-image: linear-gradient(to right, #181818 0%, black 100%); // better dark
-}
-
 .nb_mainWrapper {
     height: 10%;
     display: flex;
     overflow: hidden;
-    background: rgb(20,20,20);
-    opacity: .5;
+    background:
+	linear-gradient(
+        180deg,
+		black,
+		transparent
+    ),
+	linear-gradient(
+		60deg,
+		black,
+		transparent
+    ),
+    linear-gradient(
+		120deg,
+		black,
+		transparent
+    ),
+    linear-gradient(
+		180deg,
+		black,
+		transparent
+    ),
+    linear-gradient(
+		240deg,
+		black,
+		transparent
+    ),
+    linear-gradient(
+		300deg,
+		black,
+		transparent
+    ),
+    linear-gradient(
+		0deg,
+		rgb(23, 23, 23),
+		transparent
+    );
+	border-bottom: 1.5px solid black;
+    background-blend-mode: screen;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     // transition: all 0.3s cubic-bezier(.1,.8,.15,1);
     transition: 0.3s ease-in-out;
@@ -43,10 +68,16 @@
 
 .nb_logo {
     width: 270px;
-    background-image: url('./images/sweet.png');
-    background-size: cover;
-    background-position: left -40px bottom -41.5px;
+    // background-image: url('./images/sweet.png');
+    // background-size: cover;
+    // background-position: left -40px bottom -41.5px;
     min-height: 100%;    
+    color: #fff;
+    font-family: $roboto-condensed;
+    font-weight: $roboto-condensed-weight;
+    font-size: 44px;
+    margin-left: 16px;
+    margin-top: 27px;
 }
 
 .nb_linkWrapper {
