@@ -19,7 +19,7 @@ class DoughnutGraph extends Component{
     const white = "rgba(255,255,255,0.9";
 
     return(
-        <div>
+        <div className="graph-size">
           <Doughnut
             data={this.state.graphData}
             options={{

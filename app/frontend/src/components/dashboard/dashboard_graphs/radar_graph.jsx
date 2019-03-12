@@ -14,7 +14,7 @@ class RadarGraph extends Component{
     const white = "rgba(255,255,255,0.9";
 
     return(
-        <div>
+        <div className="graph-size">
           <Radar
             data={this.state.graphData}
             options={{
