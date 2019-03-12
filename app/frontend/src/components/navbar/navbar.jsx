@@ -23,6 +23,9 @@ class NavBar extends React.Component {
     //     }
     // }
 
+    // sjfkla;fjlsdaf
+    // asdf ds
+
 
     handleLogout(e) {
         e.preventDefault();
