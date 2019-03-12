@@ -16,9 +16,7 @@ const App = () => (
       <NavBarContainer />
       <Route exact path="/" component={SplashContainer} />
       <Route exact path="/dashboard" component={DashboardContainer}/>
-        <Switch>  
-          <Protectedroute exact path="/profile" component={ProfileContainer}/>
-        </Switch>
+      <Protectedroute exact path="/profile" component={ProfileContainer}/>
     </div>
 )
 
