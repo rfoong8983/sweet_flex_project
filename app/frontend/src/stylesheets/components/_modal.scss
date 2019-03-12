@@ -25,8 +25,10 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 1px;
+ 
   // box-shadow: 0px 1px 4px 1px #777777;
 }
+
 
 .modalTitle {
   font-family: $roboto-condensed;
@@ -68,13 +70,24 @@
   color: rgba(255,255,255,0.3);
   display: flex;
   justify-content: flex-end;
+  margin-top: 1px;
 }
 
 .mod_closeModalButton p {
   font-family: $roboto-condensed;
   font-weight: 200;
-  margin-right: 8px;
-  margin-top: 8px;
+  padding-right: 8px;
+  padding-top: 7px;
+  background: none;
+  transform: translateY(-1px);
+}
+
+.mod_closeModalButton:hover {
+  transform: translateY(0px);
+}
+
+.mod_closeModalButton:focus {
+  transform: translateY(-1px);
 }
 
 .mod_formInnerWrapper {
@@ -84,6 +97,12 @@
   align-items: center;
   height: 100%;
   margin-top: 0px;
+  animation-name: modalFade;
+  animation-duration: .3s;
+}
+@keyframes modalFade {
+  from {transform: translateX(-50%);opacity: 0;}
+  to {transform: translateY(0);opacity: 1;}
 }
 
 .nb_userInput {
@@ -128,6 +147,14 @@
   caret-color: rgb(255, 255, 255);
 }
 
+// .nb_userInput::placeholder {
+//   font-style: italic;
+// }
+
+// .nb_passInput::placeholder {
+//   font-style: italic;
+// }
+
 // input:focus::-webkit-input-placeholder{
 //     color: transparent!important;
 // }
@@ -142,12 +169,42 @@
   border-bottom: 1px rgb(73,0,218) solid;
   color: #fff;
   transition: border-radius 0.3s, background 0.3s;
+  box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  animation: pulse 2.8s infinite;
 }
 
 .nb_passInput:focus {
   border-bottom: 1px rgb(73,0,218) solid;
   color: #fff;
   transition: border-radius 0.3s, background 0.3s;
+  box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  animation: pulse 2.8s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+    box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0);
+      box-shadow: 0 4px 2px -4px rgba(204,169,44, 0);
+  }
 }
 
 .mod_signup_button {
@@ -202,6 +259,8 @@
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 27px;
+  animation-name: modalFade;
+  animation-duration: .3s;
 }
 
 .mod_loginSignupWrapper {
@@ -256,7 +315,7 @@
 
 .mod_signup_button:hover {
   width: 111px;
-
+  outline: 0;
   background: rgb(73,0,218);
   transition: border-radius 0.3s, background 0.3s;
 }
@@ -271,4 +330,24 @@
   border: 1px rgb(73,0,218) solid;
   font-size: 20px;
   color: rgba(255,255,255,0.9);
+  outline: 0;
+}
+
+.mod_close_button:focus {
+  outline: 0;
+}
+
+.mod_closeModalButton {
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.mod_closeModalButton p:hover {
+  
+    transform: translateY(0);
+}
+
+.mod_closeModalButton p:focus {
+  
+    transform: translateY(0);
 }
