@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './Root';
 import configureStore from './store/store';
+import { receiveCurrentUser } from './actions/session_actions';
 import './stylesheets/application.scss';
 
 // parse user's session token
@@ -13,7 +14,7 @@ import { logout } from './actions/session_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let store;
+    let store = configureStore();
 
     // if a returning user has a stored session token
     if (localStorage.jwtToken) {
@@ -24,9 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // decode token to obtain the user's info
         const decodedUser = jwt_decode(localStorage.jwtToken);
 
-        // create preconfigured state and add to store
-        const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
-        store = configureStore(preloadedState);
+        store.dispatch(receiveCurrentUser(decodedUser));
 
         const currentTime = Date.now() / 1000;
         // currentTime: time since Jan 1, 1970
@@ -34,14 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (decodedUser.exp < currentTime) {
             store.dispatch(logout());
             window.location.href = '/login';
-        } else {
-            // create store if first time user
-            store = configureStore({});
         }
     }
-
-    // take this out once connected with token above
-    store = configureStore({});
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
