@@ -7,8 +7,6 @@ class Profile extends React.Component {
     }
 
     render(){
-
-        // debugger
         return( 
             <div className="profile-page-container">
                 <div className="history">
