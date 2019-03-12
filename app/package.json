@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Sweet Twitter hashtag analysis tool",
   "main": "index.js",
+  "engine": {
+    "node": "8.9.4",
+    "npm": "6.9.0"
+  },
   "scripts": {
     "test": "echo \\\\\\\"Error: no test specified\\\\\\\" && exit 1",
     "start": "node app.js",
