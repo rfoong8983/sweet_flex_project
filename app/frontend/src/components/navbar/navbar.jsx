@@ -47,7 +47,9 @@ class NavBar extends React.Component {
                 <nav className="nb_innerWrapper">
                     <div className="nb_logoWrapper">
                         {/* <img className="nb_logo" src={logo} alt="logo"></img> */}
+
                         <div className="nb_logo">sweet</div>
+
                     </div>
 
                     <div className="nb_linkWrapper">
