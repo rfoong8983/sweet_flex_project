@@ -99,7 +99,7 @@ router.post('/login', (req, res) => {
                                     token: "Bearer " + token
                                 })
                             }
-                        )
+                        );
                     } else {
                         return res.status(400).json({password: 'Incorrect password'});
                     }

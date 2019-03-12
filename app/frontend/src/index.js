@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 // session utility funct to store / remove token in request header
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import {toneAnalyzeText} from './util/watson_api_util';
 // import { Session } from 'inspector';
 
 
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // take this out once connected with token above
     // store = configureStore({});
+    window.toneAnalyzeText = toneAnalyzeText;
     window.getState = store.getState
     window.dispatch = store.dispatch
     window.login = login
