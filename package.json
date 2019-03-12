@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run dev --prefix app",
     "heroku-postbuild": "npm install --prefix app && npm run innerapp-postbuild --prefix app"
   },
   "repository": {
