@@ -5,6 +5,7 @@
 /node_modules
 /.pnp
 .pnp.js
+secretOrKey: '5XmXR78Bcv'
 
 # testing
 /coverage

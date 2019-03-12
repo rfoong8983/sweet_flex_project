@@ -8,19 +8,37 @@ class Profile extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            data: [this.makeData()]
+            data: this.makeData()
         }
     }
 
     makeData(){
-        return {
+        return [{
             hashtag: "#apples",
-            date: "3/11/2019, 2:30pm",
+            time: "3/11/2019 2:30pm",
             happiness: "0.89",
             anger: "0.30",
             sadness: "0.79",
             envy: "0.54"
-        }
+        }, 
+        {    
+            hashtag: "#oranges",
+            time: "3/14/2019 2:34pm",
+            happiness: "0.41",
+            anger: "0.85",
+            sadness: "0.11",
+            envy: "0.33"
+        },
+        {    
+            hashtag: "#grapes",
+            time: "3/14/2019 7:00pm",
+            happiness: "0.70",
+            anger: "0.35",
+            sadness: "0.50",
+            envy: "0.30"
+        },
+
+]
     }
 
     render(){
@@ -28,7 +46,9 @@ class Profile extends React.Component {
         const {data} = this.state;
         return( 
             <div className="profile-page-container">
-                <div className="history">
+                <div className="table-wrapper">
+                <h2 className="table-title"> Search History </h2>
+                <div className="history-table">
                 <ReactTable
                 data={data}
                 columns={[
@@ -37,11 +57,12 @@ class Profile extends React.Component {
                         columns: [
                             {
                                 Header: "Hashtag",
-                                accessor: "hashtag"
+                                accessor: "hashtag",
+                                className: 'hashtag'
                             },
                             {
                                 Header: "Time",
-                                id: "time",
+                                accessor: "time",
                             }
                         ]
                     },
@@ -53,8 +74,8 @@ class Profile extends React.Component {
                                 accessor: "happiness"
                             },
                             {
-                            Header: "Anger",
-                            accessor: "anger"
+                                Header: "Anger",
+                                accessor: "anger"
                             },
                             {
                                 Header: "Sadness",
@@ -66,8 +87,11 @@ class Profile extends React.Component {
                             }
                         ]
             },
-          ]} defaultPageSize={10}/>
-
+          ]} 
+          defaultPageSize={10}
+          className="history-table"  
+            />
+                    </div>
                 </div>
             </div>
         )

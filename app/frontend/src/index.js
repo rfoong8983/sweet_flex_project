@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './Root';
 import configureStore from './store/store';
 import './stylesheets/application.scss';
-import {login, receiveCurrentUser} from './actions/session_actions';
+import { login, receiveCurrentUser } from './actions/session_actions';
 // parse user's session token
 import jwt_decode from 'jwt-decode';
 
@@ -15,7 +15,6 @@ import { logout } from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store = configureStore();
-    
 
     // if a returning user has a stored session token
     if (localStorage.jwtToken) {
