@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/rfoong8983/sweet_flex_project/issues"
   },
-  "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme"
+  "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme",
+  "dependencies": {
+    "proxy": "^0.2.4"
+  }
 }
