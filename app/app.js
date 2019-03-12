@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const db = process.env.MONGO_URI;
+const db = require('./config/keys').MONGO_URI;
 
 const bodyParser = require('body-parser')
 const passport = require('passport')
