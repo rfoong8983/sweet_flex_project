@@ -4,9 +4,7 @@ import React from 'react';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: "", password: ""};   
-        this.handleLogin = this.handleLogin.bind(this);
-        this.handleSignup = this.handleSignup.bind(this);  
+        this.state = {username: "", password: "", search: ""};  
         this.handleLogout = this.handleLogout.bind(this);   
     }
 
@@ -26,15 +24,6 @@ class NavBar extends React.Component {
     //     }
     // }
 
-    handleLogin(e) {
-        e.preventDefault();
-        this.props.login(this.state);
-    }
-
-    handleSignup(e) {
-        e.preventDefault();
-        this.props.signup(this.state);
-    }
 
     handleLogout(e) {
         e.preventDefault();
@@ -46,61 +35,26 @@ class NavBar extends React.Component {
             <div className="nb_mainWrapper">
                 <nav className="nb_innerWrapper">
                     <div className="nb_logoWrapper">
-                        {/* <img className="nb_logo" src={logo} alt="logo"></img> */}
-                        <div className="nb_logo"></div>
+                        <div className="nb_logo">sweet</div>
+                    </div>
+
+                    <div className="nb_searchWrapper">
+                        <input 
+                            className="nb_searchBar"
+                            onChange={this.handleUpdate('search')}
+                            placeholder="#sweet"
+                        >
+                        </input>
                     </div>
 
                     <div className="nb_linkWrapper">
-                        <label className="nb_userLabel">
-                            login
-                            <input 
-                                className="nb_userInput"
-                                type="text"
-                                placeholder="username"
-                                onChange={this.handleUpdate('username')}
-                            >
-                            </input>
-                        </label>
-
-                        <label className="nb_passLabel">
-                            password
-                            <input 
-                                className="nb_passInput"
-                                type="password"
-                                placeholder="password"
-                                onChange={this.handleUpdate('username')}
-                            >
-                            </input>
-                        </label>
-
-                        <button onClick={this.handleLogin}>login</button>
-
-                        <br></br><br></br>
-
-                        <label className="nb_userLabel">
-                            login
-                            <input
-                                className="nb_userInput"
-                                type="text"
-                                placeholder="username"
-                                onChange={this.handleUpdate('username')}
-                            >
-                            </input>
-                        </label>
-
-                        <label className="nb_passLabel">
-                            password
-                            <input
-                                className="nb_passInput"
-                                type="password"
-                                placeholder="password"
-                                onChange={this.handleUpdate('password')}
-                            >
-                            </input>
-                        </label>
-
-                        <button onClick={this.handleSignup}>signup</button>
-                        <button onClick={this.handleLogout}>log me out</button>
+                        {this.props.currentUser ? 
+                            <div className="nb_userProfileWrapper"><a href="" className="nb_userProfileLink">{this.props.currentUser.username}</a></div> :
+                            "remove this later"
+                        }
+                        <div className="nb_userLogoutWrapper">
+                            <a href="" className="nb_logoutLink" onClick={this.handleLogout}>Logout</a>
+                        </div>
                     </div>
                 </nav>
             </div>

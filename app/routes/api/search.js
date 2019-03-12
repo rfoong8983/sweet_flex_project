@@ -33,12 +33,17 @@ router.get('/', (req, res) => {
     strictSSL:            true,     // optional - requires SSL certificates to be valid.
   });
 
+  aggregateData = "";
+
   T.get('search/tweets', 
         { q: `${hashtag}`,
           count: 100,
           lang: 'en',
-          result_type: 'popular' }, 
-        (err, data, response) => { res.send(data) }); 
-
+          tweet_mode: 'extended',
+          result_type: 'mixed' }, 
+        (err, data, response) => { 
+          // debugger;
+          data.statuses.forEach(status => { aggregateData += status.full_text });
+          res.send(aggregateData.replace(/\s+/g," ")) }); 
 });
 module.exports = router;

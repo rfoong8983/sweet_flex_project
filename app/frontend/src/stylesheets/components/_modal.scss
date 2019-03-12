@@ -1,0 +1,353 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(12,0,50,0.2);
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-child {
+  position: absolute;
+  height: 53%;
+  width: 415px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.95);
+  outline: 1px rgb(34, 0, 103) solid;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1px;
+ 
+  // box-shadow: 0px 1px 4px 1px #777777;
+}
+
+
+.modalTitle {
+  font-family: $roboto-condensed;
+  font-size: 36px;
+  margin-top: 5px;
+  margin-bottom: 55px;
+  text-align: center;
+  width: 70%;
+  color: rgba(255,255,255,0.9);
+}
+
+.mod_formWrapper {
+  // margin-bottom: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+.mod_closeModal {
+  height: 22px;
+}
+
+.mod_closeModalButton {
+  font-family: $roboto-condensed;
+  font-weight: 200;
+  position: relative;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.95);
+  height: 18px;
+  opacity: 1;
+  width: 18px;
+  justify-self: end;
+  margin-left: auto;
+  flex-shrink: 0;
+  // background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: rgba(255,255,255,0.3);
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1px;
+}
+
+.mod_closeModalButton p {
+  font-family: $roboto-condensed;
+  font-weight: 200;
+  padding-right: 8px;
+  padding-top: 7px;
+  background: none;
+  transform: translateY(-1px);
+}
+
+.mod_closeModalButton:hover {
+  transform: translateY(0px);
+}
+
+.mod_closeModalButton:focus {
+  transform: translateY(-1px);
+}
+
+.mod_formInnerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 0px;
+  animation-name: modalFade;
+  animation-duration: .3s;
+}
+@keyframes modalFade {
+  from {transform: translateX(-50%);opacity: 0;}
+  to {transform: translateY(0);opacity: 1;}
+}
+
+.nb_userInput {
+  width: 70%;
+  height: 36px;
+  outline: 0;
+  transition: background-color .15s ease,border .15s ease;
+  border-radius: 2px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-width: 1px;
+  background: transparent;
+  padding-left: 15px;
+  border: 0;
+  border-bottom: 1px rgb(52, 1, 154) solid;
+  font-family: $roboto-condensed;
+
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  margin-bottom: 10px;
+  caret-color: rgb(255, 255, 255);
+}
+
+.nb_passInput {
+  width: 70%;
+  height: 36px;
+  outline: 0;
+  transition: background-color .15s ease,border .15s ease;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 2px;
+  border-width: 1px;
+  background: transparent;
+  color: rgb(255, 255, 255);
+
+  border: 0;
+  border-bottom: 1px rgb(52, 1, 154) solid;
+  padding-left: 15px;
+  font-family: $roboto-condensed;
+  font-size: 20px;
+  caret-color: rgb(255, 255, 255);
+}
+
+// .nb_userInput::placeholder {
+//   font-style: italic;
+// }
+
+// .nb_passInput::placeholder {
+//   font-style: italic;
+// }
+
+// input:focus::-webkit-input-placeholder{
+//     color: transparent!important;
+// }
+// input:focus::-moz-placeholder{
+//     color: transparent!important;
+// }
+// input:focus:-moz-placeholder{
+//     color: transparent!important;
+// }
+
+.nb_userInput:focus {
+  border-bottom: 1px rgb(73,0,218) solid;
+  color: #fff;
+  transition: border-radius 0.3s, background 0.3s;
+  box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  animation: pulse 2.8s infinite;
+}
+
+.nb_passInput:focus {
+  border-bottom: 1px rgb(73,0,218) solid;
+  color: #fff;
+  transition: border-radius 0.3s, background 0.3s;
+  box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  animation: pulse 2.8s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+    box-shadow: 0 4px 2px -4px rgba(204,169,44, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 3px rgba(204,169,44, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 4px 2px -4px rgba(204,169,44, 0);
+      box-shadow: 0 4px 2px -4px rgba(204,169,44, 0);
+  }
+}
+
+.mod_signup_button {
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 2px;
+  border-width: 1px;
+  background: transparent;
+  font-weight: 200;
+  font-family: $roboto-condensed;
+  color: rgba(255,255,255,0.5);
+  border: 1px rgb(73,0,218) solid;
+  font-size: 14px;
+  padding: 15px 15px;
+  outline: 1px rgb(34, 0, 103) solid;
+  margin-top: 25px;
+}
+
+.mod_login_button {
+  font-weight: 200;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-width: 1px;
+  background: transparent;
+  font-family: $roboto-condensed;
+  font-size: 20px;
+  color: rgba(255,255,255,0.5);
+  border: 1px rgb(73,0,218) solid;
+  font-size: 14px;
+  padding: 15px 15px;
+  outline: 1px rgb(34, 0, 103) solid;
+}
+
+
+.mod_logout_link {
+  font-weight: 200;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-width: 1px;
+  background: transparent;
+  font-family: $roboto-condensed;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  padding: 15px 15px;
+}
+
+
+.mod_buttonsWrapper {
+  width: 74%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 27px;
+  animation-name: modalFade;
+  animation-duration: .3s;
+}
+
+.mod_loginSignupWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.mod_toLogin_link {
+  font-weight: 200;
+  border-width: 1px;
+  background: transparent;
+  font-family: $roboto-condensed;
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+  margin-top: 16px;
+  margin-bottom: 5px;
+  margin-left: 4px;
+}
+
+.mod_continue_link {
+  font-weight: 200;
+  border-width: 1px;
+  background: transparent;
+  font-family: $roboto-condensed;
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.mod_toLoginSpan {
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.mod_toLoginSpan:hover {
+  font-weight: 200;
+  color: rgba(255,255,255,0.9);
+  transition: border-radius 0.3s, background 0.3s;
+  transition-timing-function: cubic-bezier(1, 3, 1, 0);
+  cursor: pointer;
+}
+
+.mod_signup_button {
+  width: 111px;
+
+  color: rgba(255,255,255,0.9);
+  transition: border-radius 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+.mod_signup_button:hover {
+  width: 111px;
+  outline: 0;
+  background: rgb(73,0,218);
+  transition: border-radius 0.3s, background 0.3s;
+}
+
+.mod_close_button {
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 2px;
+  border-width: 1px;
+  background: transparent;
+  font-family: $roboto-condensed;
+  border: 1px rgb(73,0,218) solid;
+  font-size: 20px;
+  color: rgba(255,255,255,0.9);
+  outline: 0;
+}
+
+.mod_close_button:focus {
+  outline: 0;
+}
+
+.mod_closeModalButton {
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.mod_closeModalButton p:hover {
+  
+    transform: translateY(0);
+}
+
+.mod_closeModalButton p:focus {
+  
+    transform: translateY(0);
+}

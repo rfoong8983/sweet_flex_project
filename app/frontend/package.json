@@ -5,8 +5,11 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "axios": "^0.18.0",
+    "chart.js": "^2.7.3",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.4",
+    "react-chartjs-2": "^2.7.4",
+    "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
