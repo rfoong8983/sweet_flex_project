@@ -1,6 +1,5 @@
 import { 
     RECEIVE_CURRENT_USER,
-    RECEIVE_USER_SIGN_IN,
     RECEIVE_USER_LOGOUT
 } from '../actions/session_actions';
 
