@@ -2,7 +2,7 @@
 
 }
 
-.appWrapper {
+
   
     height: auto;
     width: 100%;
@@ -53,18 +53,55 @@
 // background-image: linear-gradient(to right, #181818 0%, black 100%); // better dark
 }
 
-.nb_mainWrapper {
-    height: 10%;
-    display: flex;
-    overflow: hidden;
-    background: rgb(20,20,20);
-    opacity: .5;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    // transition: all 0.3s cubic-bezier(.1,.8,.15,1);
-    transition: 0.3s ease-in-out;
-    // transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    // background-image: linear-gradient(to right, black 100%,#434343 0%);
-}
+
+// .nb_mainWrapper {
+//     height: 10%;
+//     display: flex;
+//     overflow: hidden;
+//     background:
+// 	linear-gradient(
+//         180deg,
+// 		black,
+// 		transparent
+//     ),
+// 	linear-gradient(
+// 		60deg,
+// 		black,
+// 		transparent
+//     ),
+//     linear-gradient(
+// 		120deg,
+// 		black,
+// 		transparent
+//     ),
+//     linear-gradient(
+// 		180deg,
+// 		black,
+// 		transparent
+//     ),
+//     linear-gradient(
+// 		240deg,
+// 		black,
+// 		transparent
+//     ),
+//     linear-gradient(
+// 		300deg,
+// 		black,
+// 		transparent
+//     ),
+//     linear-gradient(
+// 		0deg,
+// 		rgb(23, 23, 23),
+// 		transparent
+//     );
+// 	border-bottom: 1.5px solid black;
+//     background-blend-mode: screen;
+//     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+//     // transition: all 0.3s cubic-bezier(.1,.8,.15,1);
+//     transition: 0.3s ease-in-out;
+//     // transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+//     // background-image: linear-gradient(to right, black 100%,#434343 0%);
+// }
 
 .nb_mainWrapper:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -82,10 +119,16 @@
 
 .nb_logo {
     width: 270px;
-    background-image: url('./images/sweet.png');
-    background-size: cover;
-    background-position: left -40px bottom -41.5px;
+    // background-image: url('./images/sweet.png');
+    // background-size: cover;
+    // background-position: left -40px bottom -41.5px;
     min-height: 100%;    
+    color: #fff;
+    font-family: $roboto-condensed;
+    font-weight: $roboto-condensed-weight;
+    font-size: 44px;
+    margin-left: 16px;
+    margin-top: 27px;
 }
 
 .nb_linkWrapper {
