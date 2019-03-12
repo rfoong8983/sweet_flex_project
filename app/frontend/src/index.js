@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 // session utility funct to store / remove token in request header
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { saveSearchData } from './actions/search_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,6 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // take this out once connected with token above
     store = configureStore({});
+
+    // API testing
+    window.saveSearchData = saveSearchData;
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);

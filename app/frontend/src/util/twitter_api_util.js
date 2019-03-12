@@ -1,9 +1,11 @@
 // npm install twit
+// import axios from 'axios';
 const Twit = require('twit');
-const keys = require('../../../config/keys');
+const keys = require('../../src/config/keys');
+const axios = require('axios');
 
-
-export const queryTweetsHashtag = hashtag => {
+module.exports = function queryTweetsHashtag(hashtag) {
+  debugger;
   const T = new Twit({
     consumer_key:         keys.twitterConsumerKey,
     consumer_secret:      keys.twitterConsumerSecret,
@@ -18,5 +20,12 @@ export const queryTweetsHashtag = hashtag => {
           count: 100,
           lang: 'en',
           result_type: 'popular' }, 
-        (err, data, response) => console.log(data) );
+        (err, data, response) => { 
+          debugger;
+          console.log(data)
+          return (data) });
+}
+
+module.exports = function fetchTwitterData(searchData) {
+  return axios.get('/api/search', searchData);
 }
