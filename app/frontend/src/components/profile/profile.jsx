@@ -44,6 +44,7 @@ class Profile extends React.Component {
     render(){
         // debugger
         const {data} = this.state;
+        
         return( 
             <div className="profile-page-container">
                 <div className="table-wrapper">
