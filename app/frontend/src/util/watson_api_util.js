@@ -20,7 +20,7 @@ export const toneAnalyzeText = text => {
   toneAnalyzer.tone(toneParams, (error, toneAnalysis) => {
     if (error) {
       console.log(error);
-    } else {
+    } else { 
       console.log(JSON.stringify(toneAnalysis, null, 2));
     }
   });

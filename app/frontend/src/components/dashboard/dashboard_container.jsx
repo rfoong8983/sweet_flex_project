@@ -142,16 +142,19 @@ class DashboardContainer extends Component {
   render() {
     //replace later with data passed in through container
     return (
-      <div className="dashboard-container">
-        <div className="dashboard">
-          <div className="flex-col-center">
-            <div className="dashboard-text">#hashtag analysis</div>
-            <div className="graph-size"><BarGraph graphData={this.state.barGraphData} /></div>
-            <div className="graph-size"><LineGraph graphData={this.state.lineGraphData} /></div>
-            <div className="graph-size"><RadarGraph graphData={this.state.radarGraphData} /></div>
-            <div className="graph-size"><DoughnutGraph graphData={this.state.doughnutGraphData} /></div>
+      <div>
+        <div className="dashboard-container">
+          <div className="dashboard">
+            <div className="flex-col-center">
+              <div className="dashboard-text">#hashtag analysis</div>
+              <BarGraph graphData={this.state.barGraphData} />  
+              <LineGraph graphData={this.state.lineGraphData} />
+              <RadarGraph graphData={this.state.radarGraphData} />
+              <DoughnutGraph graphData={this.state.doughnutGraphData} />
+            </div>
           </div>
         </div>
+
       </div>
     )
   }
