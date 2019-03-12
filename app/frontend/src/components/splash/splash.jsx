@@ -34,10 +34,10 @@ class Splash extends React.Component {
                         </div>
 
                         <div className="hero_modalButtonWrapper">
-                            <button onClick={this.handleSubmit}>Create an account</button>
+                            <button className="hero_modalButton" onClick={this.handleSubmit}>Create an account</button>
                             {/* // if user is logged in */}
                             {/* // redirect to search in handleSubmit */}
-                            <button onClick={this.props.closeModal}>Close</button>
+                            {/* <button onClick={this.props.closeModal}>Close</button> */}
                         </div>
                     </div>
                 </div>
