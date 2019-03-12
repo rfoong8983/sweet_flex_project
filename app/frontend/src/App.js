@@ -1,8 +1,8 @@
 import React from 'react';
-// import { Route } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import Modal from './components/splash_modal/modal';
 import NavBarContainer from './components/navbar/navbar_container';
+import Footer from './components/footer/footer';
 
 import DashboardContainer from './components/dashboard/dashboard_container';
 import ProfileContainer from './components/profile/profile_container';
@@ -16,10 +16,10 @@ const App = () => (
       <NavBarContainer />
       <Route exact path="/" component={SplashContainer} />
       <Route exact path="/dashboard" component={DashboardContainer}/>
-        <Switch>  
-          <Protectedroute exact path="/profile" component={ProfileContainer}/>
-        </Switch>
-      <Route exact path="/dashboard" component={DashboardContainer}/>
+      <Switch>  
+        <Protectedroute exact path="/profile" component={ProfileContainer}/>
+      </Switch>
+      <Footer />
     </div>
 )
 

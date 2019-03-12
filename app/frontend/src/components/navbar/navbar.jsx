@@ -55,7 +55,7 @@ class NavBar extends React.Component {
                         <div className="nb_userLogoutWrapper">
                             <a href="" className="nb_logoutLink" onClick={this.handleLogout}>Logout</a>
                         </div>
-                    </div>
+                  </div>
                 </nav>
             </div>
         )
