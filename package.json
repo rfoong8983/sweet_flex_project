@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run prod --prefix app",
-    "heroku-postbuild": "npm install --prefix app && npm run innerapp-postbuild --prefix app"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix app && npm run innerapp-postbuild --prefix app"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/rfoong8983/sweet_flex_project/issues"
   },
-  "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme"
+  "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme",
+  "dependencies": {
+    "proxy": "^0.2.4",
+    "serve": "^10.1.2"
+  }
 }
