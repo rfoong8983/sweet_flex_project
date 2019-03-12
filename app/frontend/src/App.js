@@ -16,6 +16,7 @@ const App = () => (
         <Switch>  
           <Protectedroute exact path="/profile" component={ProfileContainer}/>
         </Switch>
+      <Route exact path="/dashboard" component={DashboardContainer}/>
     </div>
 )
 
