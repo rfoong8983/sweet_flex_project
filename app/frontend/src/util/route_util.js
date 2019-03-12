@@ -13,7 +13,7 @@ const Auth = ({ component: Component, path, exact, loggedIn }) => (
     )} />
 );
 
-// protected routes will be rendered xwith this
+// protected routes will be rendered with this
 const Protected = ({ component: Component, path, exact, loggedIn }) => (
     <Route path={path} exact={exact} render={(props) => (
         loggedIn ? (

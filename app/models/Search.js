@@ -17,8 +17,4 @@ const SearchSchema = new Schema({
     }
 })
 
-<<<<<<< HEAD
 module.exports = Search = mongoose.model('searches', SearchSchema)
-=======
-module.exports = Search = mongoose.model('searches', SearchSchema)
->>>>>>> master
