@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Sweet Twitter hashtag analysis tool",
   "main": "index.js",
+  "engine": {
+    "node": "8.9.4",
+    "npm": "6.9.0"
+  },
   "scripts": {
     "test": "echo \\\\\\\"Error: no test specified\\\\\\\" && exit 1",
     "start": "node app.js",
@@ -10,7 +14,8 @@
     "server:debug": "nodemon --inspect app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server:debug\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server:debug\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -29,6 +34,7 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
@@ -39,6 +45,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react": "^16.8.4",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",

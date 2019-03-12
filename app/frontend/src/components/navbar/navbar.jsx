@@ -9,7 +9,6 @@ class NavBar extends React.Component {
     }
 
     handleUpdate(field) {
-        // debugger
         return (e) => {
             this.setState({[field]: e.currentTarget.value});
         };
