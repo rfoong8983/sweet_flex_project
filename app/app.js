@@ -8,10 +8,15 @@ const passport = require('passport')
 const users = require('./routes/api/users')
 const searches = require('./routes/api/search')
 
+// for development
+// mongoose
+//     .connect(db, { useNewUrlParser: true })
+//     .then(() => console.log("Connected to MongoDB successfully"))
+//     .catch(err => console.log(err));
+// const port = process.env.PORT || 5000; // run on 5000
+
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
-    .catch(err => console.log(err));
 const port = process.env.PORT || 5000; // run on 5000
 
 app.use(passport.initialize());
