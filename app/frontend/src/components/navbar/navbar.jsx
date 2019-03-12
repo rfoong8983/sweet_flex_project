@@ -49,7 +49,7 @@ class NavBar extends React.Component {
 
                     <div className="nb_linkWrapper">
                         {this.props.currentUser ? 
-                            <div className="nb_userProfileWrapper"><a href="" className="nb_userProfileLink">{this.props.currentUser.username}</a></div> :
+                            <div className="nb_userProfileWrapper"><a href="/#/profile" className="nb_userProfileLink">{this.props.currentUser.username}</a></div> :
                             "remove this later"
                         }
                         <div className="nb_userLogoutWrapper">
