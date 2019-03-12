@@ -3,10 +3,19 @@ import React from 'react';
 class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.state={username:"", password:"", formType: "register", welcomeMessage:"Create an account"};
+        this.state={
+            username:"", 
+            password:"", 
+            formType: "register", 
+            welcomeMessage: "Create an account",
+            userPlaceholder: true,
+            passPlaceholder: true
+        };
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleSignup = this.handleSignup.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.renderUserPlaceholder = this.renderUserPlaceholder.bind(this);
+        this.renderPassPlaceholder = this.renderPassPlaceholder.bind(this);
     }
 
     handleUpdate(field) {
@@ -17,17 +26,22 @@ class Form extends React.Component {
 
     handleLogin(e) {
         e.preventDefault();
-        this.props.login(this.state);
+        this.props.login(this.state)
+            .then(this.props.closeModal())
+            .catch((err) => console.log(err));
     }
 
     handleSignup(e) {
         e.preventDefault();
-        this.props.signup(this.state);
+        this.props.signup(this.state)
+            .then(this.props.closeModal())
+            .catch((err) => console.log(err));
     }
 
     handleLogout(e) {
         e.preventDefault();
         this.props.logout();
+        
     }
 
     switchFormType(type) {
@@ -72,6 +86,18 @@ class Form extends React.Component {
         }
     }
 
+    renderUserPlaceholder() {
+        return (e) => {
+            this.state.userPlaceholder ? this.setState({ userPlaceholder: false }) : this.setState({ userPlaceholder: true }) 
+        }
+    }
+
+    renderPassPlaceholder() {
+        return (e) => {
+            this.state.passPlaceholder ? this.setState({ passPlaceholder: false }) : this.setState({ passPlaceholder: true }) 
+        }
+    }
+
     render () {
         return (
 
@@ -89,16 +115,20 @@ class Form extends React.Component {
                         <input
                             className="nb_userInput"
                             type="text"
-                            placeholder="username"
+                            placeholder={this.state.userPlaceholder ? "username" : ""}
                             onChange={this.handleUpdate('username')}
+                            onFocus={this.renderUserPlaceholder()}
+                            onBlur={this.renderUserPlaceholder()}
                         >
                         </input>
 
                         <input
                             className="nb_passInput"
                             type="password"
-                            placeholder="password"
+                            placeholder={this.state.passPlaceholder ? "password" : ""}
                             onChange={this.handleUpdate('password')}
+                            onClick={this.renderPassPlaceholder()}
+                            onBlur={this.renderPassPlaceholder()}
                         >
                         </input>
 
