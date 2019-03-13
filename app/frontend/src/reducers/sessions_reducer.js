@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    currentUser: {}
 };
 
 const sessionsReducer = (oldState=initialState, action) => {
@@ -23,7 +23,13 @@ const sessionsReducer = (oldState=initialState, action) => {
                 currentUser: undefined
             };
         default:
-            return oldState;
+            return ( 
+                {
+                    ...oldState,
+                    isAuthenticated: !!action.currentUser,
+                    currentUser: action.currentUser
+                }
+            );
     }
 };
 
