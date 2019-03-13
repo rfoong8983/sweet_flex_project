@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 const port = process.env.PORT || 5000; // run on 5000
