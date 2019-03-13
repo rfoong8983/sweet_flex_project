@@ -12,7 +12,7 @@ function Modal({ modal, closeModal }) {
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
 
-                <FormContainer />
+                <FormContainer modal={modal}/>
             </div>
         </div>
     )

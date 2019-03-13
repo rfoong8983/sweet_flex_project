@@ -14,6 +14,7 @@ class NavBar extends React.Component {
         };  
         this.handleLogout = this.handleLogout.bind(this); 
         this.toHome = this.toHome.bind(this);  
+        this.openModal = this.openModal.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +37,11 @@ class NavBar extends React.Component {
       return (e) => {
         this.props.history.push("/")
       };
+    }
+
+    openModal(e) {
+      e.preventDefault();
+      this.props.openModal('form');
     }
 
     render () {
@@ -66,7 +72,10 @@ class NavBar extends React.Component {
                   {this.props.currentUser ?
                   <div className="logout flex-center">
                     <a href="" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
-                  </div> : ""}
+                    </div> : 
+                    <div className="logout flex-center">
+                      <a href="" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
+                    </div>}
                 </div>
               </div>
             </div>

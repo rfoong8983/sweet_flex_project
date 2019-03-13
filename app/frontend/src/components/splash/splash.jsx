@@ -13,9 +13,9 @@ class Splash extends React.Component {
         if (this.props.loggedIn) {
             // this.props.history.push("/search");
             // remove openModal and send to search
-            this.props.openModal('form');
+            this.props.openModal('login');
         } else {
-            this.props.openModal('form');
+            this.props.openModal('register');
         }
     }
 

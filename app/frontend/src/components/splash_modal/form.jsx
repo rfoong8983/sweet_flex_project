@@ -6,8 +6,8 @@ class Form extends React.Component {
         this.state={
             username:"", 
             password:"", 
-            formType: "register", 
-            welcomeMessage: "Create an account",
+            formType: this.props.modal, 
+            // welcomeMessage: {formType === "register" ? "Create an account"},
             userPlaceholder: true,
             passPlaceholder: true
         };
@@ -113,7 +113,7 @@ class Form extends React.Component {
                 </div>
                 <div className="mod_formInnerWrapper">
                         <h2 className="modalTitle">
-                            {this.state.welcomeMessage}
+                            {this.state.formType === "register" ? "Create an account" : "Welcome back!"}
                         </h2>
                         
                         <input
