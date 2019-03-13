@@ -44,9 +44,10 @@ class NavBar extends React.Component {
                         </div> :""}
                     </a>
                   </div>
+                  {this.props.currentUser ?
                   <div className="logout flex-center">
                     <a href="" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
-                  </div>
+                  </div> : ""}
                 </div>
               </div>
             </div>

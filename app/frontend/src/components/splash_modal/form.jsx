@@ -26,7 +26,6 @@ class Form extends React.Component {
 
     handleLogin(e) {
         e.preventDefault();
-        console.log("in handle login")
         this.props.login(this.state)
             .then(this.props.closeModal())
             .catch((err) => console.log(err));
