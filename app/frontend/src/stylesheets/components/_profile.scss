@@ -1,13 +1,37 @@
 @import "../base/fonts.scss" ;
 .profile-page-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
     font-family: $roboto-condensed;
     color: white;
+    // background-color: green;
 }
+
 .history-table{
-    background: rgb(77, 136, 155);
+    width: 1200px;
+    height: 500px;
+    background:transparent;
+    font-weight: 300;
+    margin: 50px 0;
 }
-.hashtag{
-}
+
 .table-title{
-    text-align: center;
+  margin-top: 30px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.sentiment-col {
+  height: 50px;
+  width: 20;
+  border-bottom: 1px solid rgb(65, 65, 65);
+}
+
+.main-header-col{
+  font-size: 20px;
+}
+
+.search-info-col{
+  border-bottom: 1px solid rgb(65, 65, 65);
 }
