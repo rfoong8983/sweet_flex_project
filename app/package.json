@@ -15,7 +15,7 @@
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server:debug\" \"npm run frontend\"",
-    "prod": "concurrently \"npm run start\" \"npm run frontend\"",
+    "prod": "concurrently \"npm start\" \"npm run frontend\"",
     "innerapp-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
