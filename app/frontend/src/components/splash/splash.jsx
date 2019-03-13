@@ -35,26 +35,3 @@ class Splash extends React.Component {
 }
 
 export default Splash;
-
-
-{/* <div className="hero_mainWrapper">
-                <div className="hero_contentWrapper">
-                    <div className="hero_heroWrapper">
-                        <div className="hero_sloganWrapper">
-                            <p className="hero_slogan">
-                                Impress your friends with this nifty
-                            </p>
-                            <p className="hero_slogan2">
-                                hashtag analyzer
-                            </p>
-                        </div>
-
-                        <div className="hero_modalButtonWrapper">
-                            <button className="hero_modalButton" onClick={this.handleSubmit}>Create an account</button>
-                            {/* // if user is logged in */}
-                            {/* // redirect to search in handleSubmit */}
-                            {/* <button onClick={this.props.closeModal}>Close</button> */}
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div> */}

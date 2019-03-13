@@ -46,7 +46,7 @@ class NavBar extends React.Component {
                 <input 
                       className="navbar-search"
                       onChange={this.handleUpdate('search')}
-                      placeholder="search a #hashtag">
+                      placeholder="#sweeeeet">
                 </input>
                 <div className="navbar-buttons flex-right-row">
                   <div className="profile flex-center">
@@ -57,7 +57,7 @@ class NavBar extends React.Component {
                           <a href="" className="navbar-button-style">
                             {this.props.currentUser.username}
                           </a>
-                        </div> :""}
+                        </div> :"PROFILE"}
                     </a>
                   </div>
                   <div className="logout flex-center">
