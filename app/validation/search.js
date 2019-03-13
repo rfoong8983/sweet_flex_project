@@ -1,11 +1,11 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
 
-module.exports = function validateSearchInput(data) {
+module.exports = function validateSearchInput(searchInput) {
   let errors = {};
-  data.searchInput = validText(data.searchInput) ? data.searchInput : "";
+  searchInput = validText(searchInput) ? searchInput : "";
 
-  if (Validator.isEmpty(data.searchInput)) {
+  if (Validator.isEmpty(searchInput)) {
     errors.searchInput = "Search Input required";
   }
 
