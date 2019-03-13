@@ -30,7 +30,7 @@ class NavBar extends React.Component {
                 <input 
                       className="navbar-search"
                       onChange={this.handleUpdate('search')}
-                      placeholder="search a #hashtag">
+                      placeholder="#sweeeeet">
                 </input>
                 <div className="navbar-buttons flex-right-row">
                   <div className="profile flex-center">
@@ -44,9 +44,10 @@ class NavBar extends React.Component {
                         </div> :""}
                     </a>
                   </div>
+                  {this.props.currentUser ?
                   <div className="logout flex-center">
                     <a href="" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
-                  </div>
+                  </div> : ""}
                 </div>
               </div>
             </div>

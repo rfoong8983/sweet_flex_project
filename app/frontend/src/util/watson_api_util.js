@@ -1,5 +1,5 @@
 const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-const keys = require('../../../config/keys');
+const keys = require('../config/keys');
 
 export const toneAnalyzeText = text => {
   const toneAnalyzer = new ToneAnalyzerV3({
@@ -15,11 +15,13 @@ export const toneAnalyzeText = text => {
     tones: ["emotion", "social"]
   };
 
-  toneAnalyzer.tone(toneParams, (error, toneAnalysis) => {
-    if (error) {
-      console.log(error);
-    } else { 
-      console.log(JSON.stringify(toneAnalysis, null, 2));
-    }
+  return new Promise((resolve, reject) => {
+    toneAnalyzer.tone(toneParams, function (error, toneAnalysis) {
+        if (error) {
+            reject(Error(error));
+        } else {
+            resolve(toneAnalysis);
+        }
+    });
   });
 };

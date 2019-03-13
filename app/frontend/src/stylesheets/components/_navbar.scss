@@ -1,46 +1,3 @@
-#root{
-  height: 100%;
-  background:
-    linear-gradient(
-       0deg,
-        black,
-        transparent
-   ),
-    linear-gradient(
-        60deg,
-        black,
-        transparent
-   ),
-   linear-gradient(
-        120deg,
-        black,
-        transparent
-   ),
-   linear-gradient(
-        180deg,
-        black,
-        transparent
-   ),
-   linear-gradient(
-        240deg,
-        black,
-        transparent
-   ),
-   linear-gradient(
-        300deg,
-        black,
-        transparent
-   ),
-   linear-gradient(
-        180deg,
-        #0C0032,
-        transparent
-   );
-
-   background-blend-mode: screen;
-   background-image: url(https://image.freepik.com/free-vector/vector-network-background-abstract-polygon-triangle_2065-76.jpg)
-}
-
 .navbar-container-wrap {
   font-family: $roboto-condensed;
   transition: ease 0.5s;
@@ -51,7 +8,7 @@
 }
 .navbar-container {
   height: 120px;
-  width: 1200px;
+  width: 1100px;
 }
 
 .navbar-logo {
@@ -59,7 +16,7 @@
   color: #fff;
   font-size: 44px;
   height: 100px;
-  width: 200px;
+  width: auto;
 }
 
 .navbar-search {
@@ -73,27 +30,39 @@
   outline: none;
   caret-color: rgb(255, 255, 255);
   transition: ease .3s;
-  // background-color: blue;
 }
 
 .navbar-search:hover {
   border-bottom: 1px rgb(73,0,218) solid;
 }
 
-.navbar-buttons {}
+.navbar-buttons {
+}
 
 .logout, .profile {}
 
-.navbar-button-style{
+.logout {
   margin-left: 20px;
+}
+
+.navbar-button-style{
   text-decoration: none;
   font-weight: 300;
   font-size: 17px;
   color: rgba(255, 255, 255, 0.5);
   transition: ease 0.3s;
-
 }
 
 .navbar-button-style:hover {
   color: white;
+}
+
+@media (max-width: 1200px) {
+  .navbar-container{
+    width: 700px;
+  }
+  .navbar-search {
+    width: 350px;
+    font-style: italic;
+  }
 }

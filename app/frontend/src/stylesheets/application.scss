@@ -25,6 +25,49 @@
 @import "components/footer";
 @import "components/profile";
 
+body {
+  height: 100%;
+  width: 100%;
+  background:
+    linear-gradient(
+      0deg,
+      black,
+      transparent
+      ),
+    linear-gradient(
+      60deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      120deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      180deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      240deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      300deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      180deg,
+      $dark-purple,
+      transparent
+      );
+  background-blend-mode: screen;
+  background-attachment: fixed;
+}
+
 .flex-center-row, .flex-center-spread, .flex-center-col, .flex-center, .flex-right-row, .flex-left-row {
   display: flex;
   align-items: center;

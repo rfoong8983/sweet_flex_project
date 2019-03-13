@@ -98,11 +98,12 @@
   height: 100%;
   margin-top: 0px;
   animation-name: modalFade;
-  animation-duration: .3s;
+  animation-duration: .5s;
 }
+
 @keyframes modalFade {
-  from {transform: translateX(-50%);opacity: 0;}
-  to {transform: translateY(0);opacity: 1;}
+  from {transform: translateY(-5%);opacity: 0;}
+  to {transform: translateX(0%);opacity: 1;}
 }
 
 .nb_userInput {
