@@ -14,22 +14,6 @@ class NavBar extends React.Component {
         };
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     if (this.props.formType === 'login') {
-    //         this.props.login(this.state);
-    //     } else {
-    //         this.props.signup(this.state);
-    //     }
-    // }
-
-    // sjfkla;fjlsdaf
-    // asdf ds
-
-    // adsfsdaf
-    // sadfasdfsa
-
-
     handleLogout(e) {
         e.preventDefault();
         this.props.logout();
@@ -54,9 +38,9 @@ class NavBar extends React.Component {
                       onClick={this.handleLogout}>
                       {this.props.currentUser ? 
                         <div className="navbar-buttons-style">
-                          <a href="" className="navbar-button-style">
+                          <div href="" className="navbar-button-style">
                             {this.props.currentUser.username}
-                          </a>
+                          </div>
                         </div> :""}
                     </a>
                   </div>
