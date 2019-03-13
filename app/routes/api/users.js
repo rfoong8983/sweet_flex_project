@@ -32,7 +32,7 @@ router.post('/register', (req, res) => {
         .then(user => {
             if (user) {
                 //throw 400 error if user exists
-                return res.status(400).json({email:"A user has already been registered"})
+                return res.status(400).json({username:"A user has already been registered"})
             } else {
                 const newUser = new User({
                     username: req.body.username,
@@ -44,7 +44,7 @@ router.post('/register', (req, res) => {
                       newUser.password = hash;
                       newUser.save()
                         .then(user => {
-                            const payload = { id: user.id, name: user.username };
+                            const payload = { id: user.id, username: user.username };
             
                             jwt.sign(
                                 payload, 
@@ -78,7 +78,7 @@ router.post('/login', (req, res) => {
     User.findOne({username})
         .then(user => { 
             if (!user) {
-                return res.status(404).json({email: 'This user does not exist'});
+                return res.status(404).json({username: 'This user does not exist'});
             }
             bcrypt.compare(password, user.password)
                 .then(isMatch => {

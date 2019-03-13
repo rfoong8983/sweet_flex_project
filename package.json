@@ -1,0 +1,26 @@
+{
+  "name": "sweet_flex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run prod --prefix app",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix app && npm run innerapp-postbuild --prefix app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfoong8983/sweet_flex_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rfoong8983/sweet_flex_project/issues"
+  },
+  "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme",
+  "dependencies": {
+    "proxy": "^0.2.4",
+    "serve": "^10.1.2"
+  }
+}
