@@ -1,6 +1,6 @@
 const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-// const keys = require('../../../config/keys');
-const keys = require('../config/keys');
+const keys = require('../../../config/keys');
+// const keys = require('../config/keys');
 
 const toneAnalyzeText = text => {
   const toneAnalyzer = new ToneAnalyzerV3({
