@@ -6,7 +6,6 @@ const SentimentSchema = new Schema({
     user_id: {
         type: Schema.Types.ObjectId,
         ref: 'users',
-        required: [true, 'user_id not found']
     }, 
     hashtag: {
         type: String, 

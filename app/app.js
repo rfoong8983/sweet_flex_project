@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const users = require('./routes/api/users')
 const searches = require('./routes/api/search')
-
+const sentiments = require('./routes/api/sentiment')
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
     app.get('/', (req, res) => {
@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());   
 app.use("/api/users", users);
 app.use("/api/search", searches);
+app.use("/api/sentiment", sentiments);
 
 
 
