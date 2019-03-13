@@ -19,7 +19,86 @@
 
 // Components
 @import "components/navbar";
-@import "components/dashboard";
 @import "components/splash";
 @import "components/modal";
+@import "components/dashboard";
+@import "components/footer";
 @import "components/profile";
+
+body {
+  height: 100%;
+  width: 100%;
+  background:
+    linear-gradient(
+      0deg,
+      black,
+      transparent
+      ),
+    linear-gradient(
+      60deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      120deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      180deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      240deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      300deg,
+      black,
+      transparent
+      ),
+      linear-gradient(
+      180deg,
+      $dark-purple,
+      transparent
+      );
+  background-blend-mode: screen;
+  background-attachment: fixed;
+}
+
+.flex-center-row, .flex-center-spread, .flex-center-col, .flex-center, .flex-right-row, .flex-left-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center, .flex-center-row, .flex-center-col, .flex-left-row {
+  justify-content: center;
+}
+
+.flex-center-row {
+  flex-direction: row;
+}
+
+.flex-center-spread {
+  justify-content: space-between;
+}
+
+.flex-center-col {
+  flex-direction: column;
+}
+
+.flex-right-row {
+  justify-content: flex-end;
+}
+
+.flex-left-row {
+  justify-content: flex-start;
+}
+
+.flex-left-col-spread {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}

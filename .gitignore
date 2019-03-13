@@ -1,22 +1,3 @@
 /app/config/keys_dev.js
 /app/node_modules
 /app/frontend/node_modules
-/app/frontend/.pnp
-/app/frontend/.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
