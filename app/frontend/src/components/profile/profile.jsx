@@ -16,26 +16,35 @@ class Profile extends React.Component {
         return [{
             hashtag: "#apples",
             time: "3/11/2019 2:30pm",
-            happiness: "0.89",
-            anger: "0.30",
-            sadness: "0.79",
-            envy: "0.54"
+            anger: "0.89",
+            fear: "0.30",
+            joy: "0.79",
+            sadness: "0.54",
+            analytical: "0.30",
+            confident: "0",
+            tenative: "0.54"
         }, 
         {    
             hashtag: "#oranges",
             time: "3/14/2019 2:34pm",
-            happiness: "0.41",
-            anger: "0.85",
-            sadness: "0.11",
-            envy: "0.33"
+            anger: "0.89",
+            fear: "0.30",
+            joy: "0.79",
+            sadness: "0",
+            analytical: "0.65",
+            confident: "0",
+            tenative: "0.57"
         },
         {    
             hashtag: "#grapes",
             time: "3/14/2019 7:00pm",
-            happiness: "0.70",
-            anger: "0.35",
-            sadness: "0.50",
-            envy: "0.30"
+            anger: "0.89",
+            fear: "0.51",
+            joy: "0",
+            sadness: "0.54",
+            analytical: "0",
+            confident: "0.79",
+            tenative: "0.54"
         },
 
 ]
@@ -58,7 +67,6 @@ class Profile extends React.Component {
                             {
                                 Header: "Hashtag",
                                 accessor: "hashtag",
-                                className: 'hashtag'
                             },
                             {
                                 Header: "Time",
@@ -70,21 +78,34 @@ class Profile extends React.Component {
                     Header: "Sentiment Info",
                         columns: [
                             {
-                                Header: "Happiness",
-                                accessor: "happiness"
+                                Header: "Anger",
+                                accessor: "anger",
+
                             },
                             {
-                                Header: "Anger",
-                                accessor: "anger"
+                                Header: "Fear",
+                                accessor: "fear"
+                            },
+                            {
+                                Header: "Joy",
+                                accessor: "joy"
                             },
                             {
                                 Header: "Sadness",
                                 accessor: "sadness"
                             },
                             {
-                                Header: "Envy",
-                                accessor: "envy"
-                            }
+                                Header: "Analytical",
+                                accessor: "analytical"
+                            },
+                            {
+                                Header: "Confident",
+                                accessor: "confident"
+                            },
+                            {
+                                Header: "Tenative",
+                                accessor: "tenative"
+                            },
                         ]
             },
           ]} 

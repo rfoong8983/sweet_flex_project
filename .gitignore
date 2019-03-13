@@ -1,4 +1,4 @@
-/app/config
+/app/config/keys_dev.js
 /app/node_modules
 /app/frontend/node_modules
 /app/frontend/.pnp
