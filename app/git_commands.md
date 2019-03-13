@@ -18,3 +18,12 @@
  * git pull origin master -- (updates your local master to the remote master, aka master in repo)
  * git merge `branch name` -- (merge your branch into local master)
  * git push origin master -- (update the remote master to your local master's state)
+
+ 1. git fetch (get latest snapshot of remote branches)
+ 2. checkout master, git pull master
+ 3. master is up to date
+ 4. checkout feature branch
+ 5. merge master into feature locally
+ 6. resolve git conflicts locally and test
+ 7. push merged feature branch up to remote feature
+ 8. merge remote feature branch into remote master

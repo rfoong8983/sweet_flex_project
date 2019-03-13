@@ -13,5 +13,6 @@ export const signup = (userData) => {
 };
 
 export const login = (userData) => {
+    console.log("in session api util", userData)
     return axios.post('/api/users/login', userData);
 };
