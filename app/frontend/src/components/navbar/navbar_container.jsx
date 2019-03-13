@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal, openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import { login, signup, logout } from '../../actions/session_actions';
 import NavBar from './navbar';
@@ -16,7 +16,8 @@ const mdp = dispatch => (
         login: (user) => dispatch(login(user)),
         signup: (user) => dispatch(signup(user)),
         logout: () => dispatch(logout()),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        openModal: (formType) => dispatch(openModal(formType))
     }
 );
 
