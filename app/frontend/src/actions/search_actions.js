@@ -34,12 +34,12 @@ export const fetchTwitterData = searchData => dispatch => (
 
 export const fetchWatsonData = text => dispatch => (
   WatsonAPIUtil.fetchWatsonData(text)
-    .then(watsonData => dispatch(receiveWatsonData(watsonData)) )
+    .then(watsonData => dispatch(receiveWatsonData(watsonData)))
 );
 
 export const receiveSearch = searchData => dispatch => {
   SearchAPIUtil.saveSearch(searchData)
     .then(searchData => dispatch(receiveSearchData(searchData)))
     .then(() => dispatch(fetchTwitterData(searchData)))
-    .then((twitterData) => dispatch(fetchWatsonData(twitterData.twitterData.data)))
+    .then(res => dispatch(fetchWatsonData(res.twitterData.data.allText)))
 };

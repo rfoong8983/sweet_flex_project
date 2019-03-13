@@ -13,7 +13,6 @@ import { logout } from './actions/session_actions';
 // import { fetchTwitterData } from '../src/util/twitter_api_util';
 import { fetchTwitterData, fetchWatsonData, receiveSearch, saveSearchData } from '../src/actions/search_actions';
 // import { Session } from 'inspector';
-// import { fetchWatsonData } from '../src/util/watson_api_util';
 import axios from 'axios';
 
 
