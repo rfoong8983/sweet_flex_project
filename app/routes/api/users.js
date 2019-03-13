@@ -20,7 +20,12 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     });
 });
   
+router.get('/', (req, res) => {
+    User.find({_id: '5c884e8574bbd5b19be90255'}).then(users => {
+        return res.json(users);
+    })
 
+})
 router.post('/register', (req, res) => {
 
     const {errors, isValid} = validateRegisterInput(req.body);

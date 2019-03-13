@@ -19,15 +19,33 @@ router.post('/', (req, res) =>   {
     // const { errors, isValid } = validateSentimentInput(req.body) 
     // if (!isValid) return res.status(400).json(errors);
 
+    tones = mapTonesToArr(req.body.tones[0])
+    // 
+    // console.log(req.body.currentUserId)
     const newSentiment = new Sentiment({
-        user_id: req.body.currentUserId,
+        user_id: req.body.user_id,
         hashtag: req.body.hashtag,
-        tones: req.body.tones
+        tones
     });
-
-    return newSentiment.save()
+    
+    newSentiment.save()
         .then(sentiment => {return res.json(sentiment)})
         .catch(err => console.log(err));
+});
+router.get('/', (req, res) => {
+    Sentiment.find({}).then(Sentiments => {
+        return res.json(Sentiments);
+    })
+
+})
+
+router.get('/user/:user_id', (req, res) => {
+    Sentiment.find({user_id: req.params.user_id})
+        .then(senti => res.json(senti))
+        .catch(err =>
+            res.status(404).json({ nosentifound: 'No sentiments found from that user' }
+        )
+    );
 });
 
 module.exports = router;

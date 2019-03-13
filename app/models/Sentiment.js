@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 
 const SentimentSchema = new Schema({
     user_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
+        type: String
     }, 
     hashtag: {
         type: String, 
