@@ -4,8 +4,21 @@ import React from 'react';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: "", password: "", search: ""};  
-        this.handleLogout = this.handleLogout.bind(this);   
+
+        const currentUser = this.props.currentUser;
+        
+        this.state = {
+          username: currentUser ? currentUser.username : "",
+          password: currentUser ? currentUser.password : "",
+          search: ""
+        };  
+        this.handleLogout = this.handleLogout.bind(this); 
+        this.toHome = this.toHome.bind(this);  
+    }
+
+    componentDidMount() {
+      let currentUser = this.props.currentUser;
+      currentUser ? this.setState({ username: currentUser.username, password: currentUser.password }) : currentUser = undefined;
     }
 
     handleUpdate(field) {
@@ -19,13 +32,19 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+    toHome() {
+      return (e) => {
+        this.props.history.push("/")
+      };
+    }
+
     render () {
         return (
           <div>
             <div className="navbar-container-wrap flex-center-row">
               <div className="navbar-container flex-center-spread">
                 <div className="navbar-logo flex-left-row">
-                  <h1>sweet</h1>
+                  <h1 className="navbar-logo-h1" onClick={this.toHome()}>sweet</h1>
                 </div>
                 <input 
                       className="navbar-search"
