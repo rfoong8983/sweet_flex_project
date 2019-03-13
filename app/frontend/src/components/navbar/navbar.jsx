@@ -30,7 +30,7 @@ class NavBar extends React.Component {
                 <input 
                       className="navbar-search"
                       onChange={this.handleUpdate('search')}
-                      placeholder="search a #hashtag">
+                      placeholder="#sweeeeet">
                 </input>
                 <div className="navbar-buttons flex-right-row">
                   <div className="profile flex-center">
