@@ -20,9 +20,25 @@ class Splash extends React.Component {
 
     render () {
         return (
-            <div className="hero_mainWrapper">
-                <div className="hero_contentWrapper">
+          <div>
+            <div className="hero-container-wrap flex-center-col">
+              <div className="hero-container flex-left-col-spread">
+                <div className="hero-text">
+                  <h1> Impress your friends with this nifty hashtag analyzer</h1>
+                </div>
+                <button className="sign-up-button" onClick={this.handleSubmit}>Create an Account</button>
+              </div>
+            </div>
+          </div>
+        )
+    }
+}
 
+export default Splash;
+
+
+{/* <div className="hero_mainWrapper">
+                <div className="hero_contentWrapper">
                     <div className="hero_heroWrapper">
                         <div className="hero_sloganWrapper">
                             <p className="hero_slogan">
@@ -38,12 +54,7 @@ class Splash extends React.Component {
                             {/* // if user is logged in */}
                             {/* // redirect to search in handleSubmit */}
                             {/* <button onClick={this.props.closeModal}>Close</button> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
-
-export default Splash;
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div> */}

@@ -1,8 +1,6 @@
 .appWrapper {
     height: 100%;
     width: 100%;
-    // background: rgb(155, 155, 117)
-    // background-image: linear-gradient(to top right, black, rgb(72, 0, 72));
     background:
 	linear-gradient(
     0deg,
@@ -42,12 +40,6 @@
 	
 background-blend-mode: screen;
 }
-
-// .appWrapper {
-//     height: 100%;
-//     width: 100%;
-//     background-image: linear-gradient(#f06543, #ffbe3d)
-// }
 
 .hero_mainWrapper {
   height: 523.61px;
@@ -108,4 +100,36 @@ background-blend-mode: screen;
   color: rgb(255,255,255);
 }
 
+
+.hero-container-wrap {
+  width: 100%;
+  height: 70vh;
+}
+
+.hero-container {
+  width: 1200px;
+  height: 300px;
+  font-family: $roboto-condensed;
+  font-weight: $roboto-condensed-weight;
+  color: $white;
+  font-size: 62px;
+}
+
+.hero-text {
+  width: 700px;
+}
+
+.sign-up-button {
+  height: 50px;
+  width: 185px;
+  font-weight: 200;
+  background: transparent;
+  font-family: $roboto-condensed;
+  font-size: 20px;
+  color: rgba(255,255,255,0.5);
+  border: 1px rgb(73,0,218) solid;
+  font-size: 14px;
+  padding: 15px 15px;
+  outline: 1px rgb(34, 0, 103) solid;
+}
 
