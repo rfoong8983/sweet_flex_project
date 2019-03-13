@@ -10,6 +10,7 @@ const users = require('./routes/api/users')
 const searches = require('./routes/api/search')
 
 if (process.env.NODE_ENV === 'production') {
+    console.log(process.env.NODE_ENV);
     app.use(express.static('frontend/build'));
     app.get('/', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
