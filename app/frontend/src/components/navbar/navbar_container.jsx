@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import { login, signup, logout } from '../../actions/session_actions';
+import { receiveSearch } from '../../actions/search_actions'
 import NavBar from './navbar';
+import { withRouter } from 'react-router-dom';
 
 const msp = state => (
     {   
@@ -15,8 +17,9 @@ const mdp = dispatch => (
         login: (user) => dispatch(login(user)),
         signup: (user) => dispatch(signup(user)),
         logout: () => dispatch(logout()),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        search: (searchData) => dispatch(receiveSearch(searchData))
     }
 );
 
-export default connect(msp, mdp)(NavBar);
+export default withRouter(connect(msp, mdp)(NavBar));

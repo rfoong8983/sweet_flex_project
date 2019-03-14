@@ -1,11 +1,13 @@
 import React from 'react';
 // import logo from '../images/sweet.png';
+import { Redirect } from 'react-router-dom';
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {username: "", password: "", search: ""};  
         this.handleLogout = this.handleLogout.bind(this);   
+        this.handleKeyPress = this.handleKeyPress.bind(this);   
     }
 
     handleUpdate(field) {
@@ -30,6 +32,18 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.props.search(this.state.search);
+            this.setState({search: ""});
+            if (this.props.location.pathname === '/dashboard') {
+              window.location.reload();
+            } else {
+              this.props.history.push('/dashboard');
+            }
+        }
+    }
+
     render () {
         return (
             <div className="nb_mainWrapper">
@@ -41,7 +55,9 @@ class NavBar extends React.Component {
                     <div className="nb_searchWrapper">
                         <input 
                             className="nb_searchBar"
+                            value={this.state.search}
                             onChange={this.handleUpdate('search')}
+                            onKeyPress={this.handleKeyPress}
                             placeholder="#sweet"
                         >
                         </input>

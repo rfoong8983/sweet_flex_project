@@ -34,8 +34,8 @@ router.post('/twitter', (req, res) => {
     strictSSL:            true,     // optional - requires SSL certificates to be valid.
   });
 
-  aggregateData = "";
-
+  allText = "";
+  allTweets = []; 
   T.get('search/tweets', 
         { q: `${hashtag}`,
           count: 100,
@@ -43,8 +43,20 @@ router.post('/twitter', (req, res) => {
           tweet_mode: 'extended',
           result_type: 'mixed' }, 
         (err, data, response) => { 
-          data.statuses.forEach(status => { aggregateData += status.full_text });
-          res.send(aggregateData.replace(/\s+/g," ")) }); 
+          data.statuses.forEach(status => { 
+            allTweets.push({
+              fullText: status.full_text.replace(/\n/g, " "),
+              screenName: status.user.screen_name,
+              userName: status.user.name
+            });
+
+            allText += status.full_text; 
+          });
+          res.send({
+            allTweets: allTweets,
+            allText: allText.replace(/\s+/g," ")
+          });
+  });
 });
 
 router.post('/watson', (req, res) => {
