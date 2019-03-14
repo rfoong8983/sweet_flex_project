@@ -12,7 +12,7 @@ class BarGraph extends Component{
   render(){
     const gray = "rgba(40, 40, 40, 1)";
     return(
-        <div>
+        <div className="graph-size">
           <Bar
             data={this.state.graphData}
             options={{

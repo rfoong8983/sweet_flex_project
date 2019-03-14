@@ -1,96 +1,25 @@
-.appWrapper {
-    height: 100%;
-    width: 100%;
-    // background-image: linear-gradient(to top right, black, rgb(72, 0, 72));
-    background:
-	linear-gradient(
-    0deg,
-		black,
-		transparent
-    ),
-	linear-gradient(
-		60deg,
-		black,
-		transparent
-    ),
-    linear-gradient(
-		120deg,
-		black,
-		transparent
-    ),
-    linear-gradient(
-		180deg,
-		black,
-		transparent
-    ),
-    linear-gradient(
-		240deg,
-		black,
-		transparent
-    ),
-    linear-gradient(
-		300deg,
-		black,
-		transparent
-    ),
-    linear-gradient(
-		180deg,
-		$dark-purple,
-		transparent
-    );
-	
-background-blend-mode: screen;
+.hero-container-wrap {
+  width: 100%;
+  height: 70vh;
 }
 
-// .appWrapper {
-//     height: 100%;
-//     width: 100%;
-//     background-image: linear-gradient(#f06543, #ffbe3d)
-// }
-
-.hero_mainWrapper {
-  height: 523.61px;
-}
-
-.hero_contentWrapper {
-  height: 100%;
-}
-
-.hero_sloganWrapper {
-  display: flex;
-  flex-direction: column;
-  height: 425px;
+.hero-container {
+  width: 1100px;
+  height: 300px;
   font-family: $roboto-condensed;
   font-weight: $roboto-condensed-weight;
   color: $white;
-}
-
-.hero_slogan {
   font-size: 62px;
-  margin-left: 95px;
-  margin-top: 210px;
-  width: 80%;
 }
 
-.hero_slogan2 {
-  font-size: 62px;
-  margin-left: 95px;
-  width: 80%;
+.hero-text {
+  width: 700px;
 }
 
-.hero_modalButtonWrapper {
-  height: 96px;
-  display: flex;
-  padding-top: 0px;
-}
-
-.hero_modalButton {
-  height: 48px;
+.sign-up-button {
+  height: 50px;
   width: 185px;
   font-weight: 200;
-  margin-left: 97px;
-  margin-right: 2px;
-  border-width: 1px;
   background: transparent;
   font-family: $roboto-condensed;
   font-size: 20px;
@@ -99,12 +28,17 @@ background-blend-mode: screen;
   font-size: 14px;
   padding: 15px 15px;
   outline: 1px rgb(34, 0, 103) solid;
+  transition: ease .3s;
 }
 
-.hero_modalButton:hover {
+.sign-up-button:hover {
   background: rgb(73,0,218);
-  transition: border-radius 0.3s, background 0.3s;
   color: rgb(255,255,255);
 }
 
 
+@media (max-width: 1200px) {
+  .hero-container {
+    width: 700px;
+  }
+}

@@ -11,7 +11,7 @@ class LineGraph extends Component{
 
   render(){
     return(
-        <div>
+        <div className="graph-size">
           <Line
             data={this.state.graphData}
             options={{

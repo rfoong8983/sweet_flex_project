@@ -11,21 +11,10 @@ class NavBar extends React.Component {
     }
 
     handleUpdate(field) {
-        // debugger
         return (e) => {
             this.setState({[field]: e.currentTarget.value});
         };
     }
-
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     if (this.props.formType === 'login') {
-    //         this.props.login(this.state);
-    //     } else {
-    //         this.props.signup(this.state);
-    //     }
-    // }
-
 
     handleLogout(e) {
         e.preventDefault();
