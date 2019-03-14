@@ -4,6 +4,7 @@ class Splash extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toProfile = this.toProfile.bind(this);
     }
 
     handleSubmit(e) {
@@ -12,10 +13,17 @@ class Splash extends React.Component {
         if (this.props.loggedIn) {
             // this.props.history.push("/search");
             // remove openModal and send to search
-            this.props.openModal('form');
+            this.props.openModal('login');
         } else {
-            this.props.openModal('form');
+            this.props.openModal('register');
         }
+    }
+
+    toProfile() {
+      return (e) => {
+        e.preventDefault();
+        this.props.history.push("/profile");
+      };
     }
 
     render () {
@@ -26,7 +34,10 @@ class Splash extends React.Component {
                 <div className="hero-text">
                   <h1> Impress your friends with this nifty hashtag analyzer</h1>
                 </div>
-                <button className="sign-up-button" onClick={this.handleSubmit}>Create an Account</button>
+                {this.props.loggedIn
+                ? <button className="sign-up-button" onClick={this.toProfile()}>My Profile</button>
+                : <button className="sign-up-button" onClick={this.handleSubmit}>Create an Account</button>
+                }
               </div>
             </div>
           </div>

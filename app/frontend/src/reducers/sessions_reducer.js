@@ -5,11 +5,10 @@ import {
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    currentUser: {}
 };
 
 const sessionsReducer = (oldState=initialState, action) => {
-    console.log("in session reducer", action)
     Object.freeze(oldState);
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
@@ -24,7 +23,13 @@ const sessionsReducer = (oldState=initialState, action) => {
                 currentUser: undefined
             };
         default:
-            return oldState;
+            return ( 
+                {
+                    ...oldState,
+                    isAuthenticated: !!action.currentUser,
+                    currentUser: action.currentUser
+                }
+            );
     }
 };
 

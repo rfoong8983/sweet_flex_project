@@ -146,7 +146,7 @@ class DashboardContainer extends Component {
         <div className="dashboard-container">
           <div className="dashboard">
             <div className="flex-col-center">
-              <div className="dashboard-text">#hashtag analysis</div>
+              <div className="dashboard-text">#Hashtag Analysis</div>
               <BarGraph graphData={this.state.barGraphData} />  
               <LineGraph graphData={this.state.lineGraphData} />
               <RadarGraph graphData={this.state.radarGraphData} />
