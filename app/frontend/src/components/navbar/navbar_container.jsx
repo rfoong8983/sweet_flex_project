@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { login, signup, logout } from '../../actions/session_actions';
 import { receiveSearch } from '../../actions/search_actions'
 import NavBar from './navbar';
-import { withRouter } from 'react-router-dom';
 
 const msp = state => (   
     {

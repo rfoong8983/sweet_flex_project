@@ -16,6 +16,7 @@ class NavBar extends React.Component {
         this.handleLogout = this.handleLogout.bind(this); 
         this.toHome = this.toHome.bind(this);  
         this.openModal = this.openModal.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentDidMount() {
@@ -37,19 +38,20 @@ class NavBar extends React.Component {
 
 
     handleKeyPress(e) {
-        if (e.key === 'Enter') {
-            this.props.search(this.state.search);
-            this.setState({search: ""});
-            if (this.props.location.pathname === '/dashboard') {
-              window.location.reload();
-            } else {
-              this.props.history.push('/dashboard');
-            }
-        }
+      if (e.key === 'Enter') {
+          this.props.search(this.state.search);
+          this.setState({search: ""});
+          if (this.props.location.pathname === '/dashboard') {
+            window.location.reload();
+          } else {
+            this.props.history.push('/dashboard');
+          }
+      }
+    }
 
     toHome() {
       return (e) => {
-        this.props.history.push("/")
+        this.props.history.push("/");
       };
     }
 
@@ -96,6 +98,7 @@ class NavBar extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
         )
     }
 }
