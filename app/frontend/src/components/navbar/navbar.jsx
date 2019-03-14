@@ -1,5 +1,6 @@
 import React from 'react';
 // import logo from '../images/sweet.png';
+import { Redirect } from 'react-router-dom';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class NavBar extends React.Component {
     componentDidMount() {
       let currentUser = this.props.currentUser;
       currentUser ? this.setState({ username: currentUser.username, password: currentUser.password }) : currentUser = undefined;
+
     }
 
     handleUpdate(field) {
@@ -33,6 +35,18 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.props.search(this.state.search);
+            this.setState({search: ""});
+            if (this.props.location.pathname === '/dashboard') {
+              window.location.reload();
+            } else {
+              this.props.history.push('/dashboard');
+            }
+        }
+
     toHome() {
       return (e) => {
         this.props.history.push("/")
@@ -42,10 +56,12 @@ class NavBar extends React.Component {
     openModal(e) {
       e.preventDefault();
       this.props.openModal('form');
+
     }
 
     render () {
         return (
+
           <div>
             <div className="navbar-container-wrap flex-center-row">
               <div className="navbar-container flex-center-spread">
@@ -55,6 +71,7 @@ class NavBar extends React.Component {
                 <input 
                       className="navbar-search"
                       onChange={this.handleUpdate('search')}
+                      onKeyPress={this.handleKeyPress}
                       placeholder="#sweeeeet">
                 </input>
                 <div className="navbar-buttons flex-right-row">
@@ -79,7 +96,6 @@ class NavBar extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
         )
     }
 }

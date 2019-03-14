@@ -24,23 +24,22 @@ export const receiveWatsonData = watsonData => ({
 
 export const saveSearchData = searchData => dispatch => (
   SearchAPIUtil.saveSearch(searchData)
-               .then(searchData => dispatch(receiveSearchData(searchData)))
+      .then(searchData => dispatch(receiveSearchData(searchData)))
 );
 
 export const fetchTwitterData = searchData => dispatch => (
   TwitterAPIUtil.fetchTwitterData(searchData)
-                .then(twitterData => dispatch(receiveTwitterData(twitterData)))
+    .then(twitterData => dispatch(receiveTwitterData(twitterData)))
 );
 
 export const fetchWatsonData = text => dispatch => (
-  WatsonAPIUtil.toneAnalyzeText(text)
-               .then(watsonData => { dispatch(receiveWatsonData(watsonData)) })
+  WatsonAPIUtil.fetchWatsonData(text)
+    .then(watsonData => dispatch(receiveWatsonData(watsonData)))
 );
 
-// export const receiveSearch = searchData => dispatch => (
-//   saveSearchData(searchData)
-//     .then((searchData.query) => dispatch())
-// );
-
-
-// searchData.data.query after the saveSearch
+export const receiveSearch = searchData => dispatch => {
+  SearchAPIUtil.saveSearch(searchData)
+    .then(searchData => dispatch(receiveSearchData(searchData)))
+    .then(() => dispatch(fetchTwitterData(searchData)))
+    .then(res => dispatch(fetchWatsonData(res.twitterData.data.allText)))
+};

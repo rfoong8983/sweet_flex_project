@@ -10,11 +10,9 @@ import jwt_decode from 'jwt-decode';
 // session utility funct to store / remove token in request header
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-import { saveSearchData, fetchWatsonData } from './actions/search_actions';
 // import { fetchTwitterData } from '../src/util/twitter_api_util';
-import { fetchTwitterData } from '../src/actions/search_actions';
+import { fetchTwitterData, fetchWatsonData, receiveSearch, saveSearchData } from '../src/actions/search_actions';
 // import { Session } from 'inspector';
-import fs from 'fs';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -52,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.login = login
     window.fetchTwitterData = fetchTwitterData;
     window.fetchWatsonData = fetchWatsonData;
+    window.receiveSearch = receiveSearch;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
