@@ -1,6 +1,6 @@
 import React from 'react';
 // import logo from '../images/sweet.png';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -16,12 +16,12 @@ class NavBar extends React.Component {
         this.handleLogout = this.handleLogout.bind(this); 
         this.toHome = this.toHome.bind(this);  
         this.openModal = this.openModal.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentDidMount() {
       let currentUser = this.props.currentUser;
       currentUser ? this.setState({ username: currentUser.username, password: currentUser.password }) : currentUser = undefined;
-
     }
 
     handleUpdate(field) {
@@ -40,12 +40,17 @@ class NavBar extends React.Component {
         if (e.key === 'Enter') {
             this.props.search(this.state.search);
             this.setState({search: ""});
-            if (this.props.location.pathname === '/dashboard') {
-              window.location.reload();
-            } else {
+            if (this.props.location.pathname !== '/dashboard') {
               this.props.history.push('/dashboard');
             }
+
+            // if (this.props.location.pathname === '/dashboard') {
+            //   window.location.reload();
+            // } else {
+            //   this.props.history.push('/dashboard');
+            // }
         }
+    }
 
     toHome() {
       return (e) => {
@@ -96,6 +101,7 @@ class NavBar extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
         )
     }
 }
