@@ -7,4 +7,4 @@ export const fetchTwitterData = searchData => (
     url: '/api/search/twitter',
     data: { searchData }
   })
-)
+);
