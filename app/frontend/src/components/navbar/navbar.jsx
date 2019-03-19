@@ -37,6 +37,7 @@ class NavBar extends React.Component {
 
 
     handleKeyPress(e) {
+      
         if (e.key === 'Enter') {
             this.props.search(this.state.search);
             this.setState({search: ""});
@@ -50,11 +51,10 @@ class NavBar extends React.Component {
             //   this.props.history.push('/dashboard');
             // }
         }
-    }
 
     toHome() {
       return (e) => {
-        this.props.history.push("/")
+        this.props.history.push("/");
       };
     }
 
