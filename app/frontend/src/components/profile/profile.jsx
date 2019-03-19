@@ -16,26 +16,35 @@ class Profile extends React.Component {
         return [{
             hashtag: "#apples",
             time: "3/11/2019 2:30pm",
-            happiness: "0.89",
-            anger: "0.30",
-            sadness: "0.79",
-            envy: "0.54"
+            anger: "0.89",
+            fear: "0.30",
+            joy: "0.79",
+            sadness: "0.54",
+            analytical: "0.30",
+            confident: "0",
+            tenative: "0.54"
         }, 
         {    
             hashtag: "#oranges",
             time: "3/14/2019 2:34pm",
-            happiness: "0.41",
-            anger: "0.85",
-            sadness: "0.11",
-            envy: "0.33"
+            anger: "0.89",
+            fear: "0.30",
+            joy: "0.79",
+            sadness: "0",
+            analytical: "0.65",
+            confident: "0",
+            tenative: "0.57"
         },
         {    
             hashtag: "#grapes",
             time: "3/14/2019 7:00pm",
-            happiness: "0.70",
-            anger: "0.35",
-            sadness: "0.50",
-            envy: "0.30"
+            anger: "0.89",
+            fear: "0.51",
+            joy: "0",
+            sadness: "0.54",
+            analytical: "0",
+            confident: "0.79",
+            tenative: "0.54"
         },
 
 ]
@@ -48,49 +57,85 @@ class Profile extends React.Component {
         return( 
             <div className="profile-page-container">
                 <div className="table-wrapper">
-                <h2 className="table-title"> Search History </h2>
+                <h2 className="table-title" flex-center> Search History </h2>
                 <div className="history-table">
                 <ReactTable
                 data={data}
+                style={{
+                  height: "500px"
+                }}
                 columns={[
                     {
                     Header: "Search Info",
+                    headerClassName: "main-header-col search-info-col flex-center",
                         columns: [
                             {
                                 Header: "Hashtag",
+                                headerClassName: "search-info-col flex-center",
                                 accessor: "hashtag",
-                                className: 'hashtag'
+                                className:"search-info-col flex-center",
+                                width: 150
                             },
                             {
                                 Header: "Time",
+                                headerClassName: "search-info-col flex-center",
+                                width: 180,
                                 accessor: "time",
+                                className:"search-info-col flex-center"
                             }
                         ]
                     },
                     {
                     Header: "Sentiment Info",
+                    headerClassName: "main-header-col sentiment-col flex-center",
                         columns: [
                             {
-                                Header: "Happiness",
-                                accessor: "happiness"
+                                Header: "Anger",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "anger",
+                                className:"sentiment-col flex-center",
                             },
                             {
-                                Header: "Anger",
-                                accessor: "anger"
+                                Header: "Fear",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "fear",
+                                className:"sentiment-col flex-center"
+                            },
+                            {
+                                Header: "Joy",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "joy",
+                                className:"sentiment-col flex-center"
                             },
                             {
                                 Header: "Sadness",
-                                accessor: "sadness"
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "sadness",
+                                className:"sentiment-col flex-center"
                             },
                             {
-                                Header: "Envy",
-                                accessor: "envy"
-                            }
+                                Header: "Analytical",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "analytical",
+                                className:"sentiment-col flex-center"
+                            },
+                            {
+                                Header: "Confident",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "confident",
+                                className:"sentiment-col flex-center"
+                            },
+                            {
+                                Header: "Tenative",
+                                headerClassName: "sentiment-col flex-center",
+                                accessor: "tenative",
+                                className:"sentiment-col flex-center"
+                            },
                         ]
             },
           ]} 
           defaultPageSize={10}
-          className="history-table"  
+          // className="history-table"  
             />
                     </div>
                 </div>

@@ -5,9 +5,23 @@ import { Redirect } from 'react-router-dom';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: "", password: "", search: ""};  
-        this.handleLogout = this.handleLogout.bind(this);   
-        this.handleKeyPress = this.handleKeyPress.bind(this);   
+
+        const currentUser = this.props.currentUser;
+        
+        this.state = {
+          username: currentUser ? currentUser.username : "",
+          password: currentUser ? currentUser.password : "",
+          search: ""
+        };  
+        this.handleLogout = this.handleLogout.bind(this); 
+        this.toHome = this.toHome.bind(this);  
+        this.openModal = this.openModal.bind(this);
+    }
+
+    componentDidMount() {
+      let currentUser = this.props.currentUser;
+      currentUser ? this.setState({ username: currentUser.username, password: currentUser.password }) : currentUser = undefined;
+
     }
 
     handleUpdate(field) {
@@ -21,6 +35,7 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+
     handleKeyPress(e) {
         if (e.key === 'Enter') {
             this.props.search(this.state.search);
@@ -31,37 +46,55 @@ class NavBar extends React.Component {
               this.props.history.push('/dashboard');
             }
         }
+
+    toHome() {
+      return (e) => {
+        this.props.history.push("/")
+      };
+    }
+
+    openModal(e) {
+      e.preventDefault();
+      this.props.openModal('form');
+
     }
 
     render () {
         return (
-            <div className="nb_mainWrapper">
-                <nav className="nb_innerWrapper">
-                    <div className="nb_logoWrapper">
-                        <div className="nb_logo">sweet</div>
-                    </div>
 
-                    <div className="nb_searchWrapper">
-                        <input 
-                            className="nb_searchBar"
-                            value={this.state.search}
-                            onChange={this.handleUpdate('search')}
-                            onKeyPress={this.handleKeyPress}
-                            placeholder="#sweet"
-                        >
-                        </input>
-                    </div>
-
-                    <div className="nb_linkWrapper">
-                        {this.props.currentUser ? 
-                            <div className="nb_userProfileWrapper"><a href="" className="nb_userProfileLink">{this.props.currentUser.username}</a></div> :
-                            "remove this later"
-                        }
-                        <div className="nb_userLogoutWrapper">
-                            <a href="" className="nb_logoutLink" onClick={this.handleLogout}>Logout</a>
-                        </div>
-                    </div>
-                </nav>
+          <div>
+            <div className="navbar-container-wrap flex-center-row">
+              <div className="navbar-container flex-center-spread">
+                <div className="navbar-logo flex-left-row">
+                  <h1 className="navbar-logo-h1" onClick={this.toHome()}>sweet</h1>
+                </div>
+                <input 
+                      className="navbar-search"
+                      onChange={this.handleUpdate('search')}
+                      onKeyPress={this.handleKeyPress}
+                      placeholder="#sweeeeet">
+                </input>
+                <div className="navbar-buttons flex-right-row">
+                  <div className="profile flex-center">
+                    <a href="" className="navbar-button-style" 
+                      onClick={this.handleLogout}>
+                      {this.props.currentUser ? 
+                        <div className="navbar-buttons-style">
+                          <div href="" className="navbar-button-style">
+                            {this.props.currentUser.username}
+                          </div>
+                        </div> :""}
+                    </a>
+                  </div>
+                  {this.props.currentUser ?
+                  <div className="logout flex-center">
+                    <a href="" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
+                    </div> : 
+                    <div className="logout flex-center">
+                      <a href="" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
+                    </div>}
+                </div>
+              </div>
             </div>
         )
     }

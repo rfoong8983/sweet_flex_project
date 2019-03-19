@@ -17,7 +17,7 @@ import { fetchTwitterData, fetchWatsonData, receiveSearch, saveSearchData } from
 
 document.addEventListener("DOMContentLoaded", () => {
     let store = configureStore();
-
+    
     // if a returning user has a stored session token
     if (localStorage.jwtToken) {
 
@@ -37,9 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = '/login';
         } 
     }
-
-    // take this out once connected with token above
-    store = configureStore({});
 
     // API testing
     window.saveSearchData = saveSearchData;
