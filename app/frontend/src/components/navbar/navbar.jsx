@@ -51,7 +51,7 @@ class NavBar extends React.Component {
             //   this.props.history.push('/dashboard');
             // }
         }
-
+    }
     toHome() {
       return (e) => {
         this.props.history.push("/");
