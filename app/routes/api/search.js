@@ -47,7 +47,9 @@ router.post('/twitter', (req, res) => {
             allTweets.push({
               fullText: status.full_text.replace(/\n/g, " "),
               screenName: status.user.screen_name,
-              userName: status.user.name
+              userName: status.user.name,
+              tweetTime: status.created_at,
+              location: status.place
             });
 
             allText += status.full_text; 

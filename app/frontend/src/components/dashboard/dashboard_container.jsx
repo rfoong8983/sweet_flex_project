@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LineGraph from './dashboard_graphs/line_graph';
 import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
@@ -18,6 +19,69 @@ class DashboardContainer extends Component {
 
   componentWillMount() {
     this.getGraphData();
+  }
+
+  getSentenceTones() {
+    const sentenceTonesHash = {};
+    let sentenceTones = this.props.watsonSentenceTones;
+    for (let i = 0; i < sentenceTones.length; i++) {
+      let tones = sentenceTones[i].tones;
+      for (let j = 0; j < tones.length; j++) {
+        let tone = tones[j];
+        if (sentenceTonesHash[tone.tone_name]) {
+          sentenceTonesHash[tone.tone_name] += tone.score;
+        } else {
+          sentenceTonesHash[tone.tone_name] = tone.score;
+        }
+      }
+    }
+    return sentenceTonesHash;
+  }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
+      console.log(this.getSentenceTones());
+      const purple = 'rgba(118, 60, 234, 1)';
+      const purpleLowOpac = 'rgba(118, 0, 234, .5)';
+      const purpleBorder = 'rgba(118, 0, 234, 1)';
+      const blue = 'rgba(53, 0, 212, 1)';
+      const blueLowOpac = 'rgba(53, 0, 212, .5)';
+      const blueBorder = 'rgba(53, 0, 212, 1)';
+      const none = 'rgba(0, 0, 0, 0)';
+      
+
+      this.setState({
+        radarGraphData: {
+          labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
+          datasets: [
+            {
+              label: 'hashtag 1', // hashtag searched
+              data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
+              borderColor: blue,
+              lineTension: 0,
+              borderWidth: 2,
+              backgroundColor: blueLowOpac,
+              pointBackgroundColor: "black",
+              pointBorderColor: blueBorder,
+              pointBorderWidth: 2,
+              pointRadius: 3
+            },
+            {
+              label: "hashtag 2",
+              data: [35, 19, 32, 75, 32, 62, 15],
+              borderColor: purple,
+              lineTension: 0,
+              borderWidth: 2,
+              backgroundColor: purpleLowOpac,
+              pointBackgroundColor: "black",
+              pointBorderColor: purpleBorder,
+              pointBorderWidth: 2,
+              pointRadius: 3
+            }
+          ]
+        }, 
+      });
+    }
   }
 
   getGraphData() {
@@ -160,4 +224,10 @@ class DashboardContainer extends Component {
   }
 }
 
-export default DashboardContainer;
+const msp = state => ({
+  allTweets: state.entities.tweets.allTweets, 
+  watsonDocTones: state.entities.watson.documentTones,
+  watsonSentenceTones: state.entities.watson.sentenceTones
+});
+
+export default connect(msp)(DashboardContainer);
