@@ -40,7 +40,6 @@ class DashboardContainer extends Component {
 
   componentDidUpdate(oldProps) {
     if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
-      console.log(this.getSentenceTones());
       const purple = 'rgba(118, 60, 234, 1)';
       const purpleLowOpac = 'rgba(118, 0, 234, .5)';
       const purpleBorder = 'rgba(118, 0, 234, 1)';
@@ -49,14 +48,15 @@ class DashboardContainer extends Component {
       const blueBorder = 'rgba(53, 0, 212, 1)';
       const none = 'rgba(0, 0, 0, 0)';
       
+      const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
 
       this.setState({
         radarGraphData: {
-          labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
+          labels: tones,
           datasets: [
             {
               label: 'hashtag 1', // hashtag searched
-              data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
+              data: toneData,
               borderColor: blue,
               lineTension: 0,
               borderWidth: 2,
@@ -65,23 +65,20 @@ class DashboardContainer extends Component {
               pointBorderColor: blueBorder,
               pointBorderWidth: 2,
               pointRadius: 3
-            },
-            {
-              label: "hashtag 2",
-              data: [35, 19, 32, 75, 32, 62, 15],
-              borderColor: purple,
-              lineTension: 0,
-              borderWidth: 2,
-              backgroundColor: purpleLowOpac,
-              pointBackgroundColor: "black",
-              pointBorderColor: purpleBorder,
-              pointBorderWidth: 2,
-              pointRadius: 3
             }
           ]
         }, 
       });
     }
+  }
+
+  getRadarGraphData(sentenceTones) {
+    let tones = Object.keys(sentenceTones);
+    let toneData = [];
+    for (let i = 0; i < tones.length; i++) {
+      toneData.push(sentenceTones[tones[i]]);
+    }
+    return [tones, toneData];
   }
 
   getGraphData() {
