@@ -68,6 +68,26 @@ class DashboardContainer extends Component {
             }
           ]
         }, 
+        doughnutGraphData: {
+          labels: tones,
+          datasets: [
+            {
+              data: toneData,
+              hoverBorderColor: [
+                blueBorder,
+                purpleLowOpac, 
+                blue
+              ],
+              backgroundColor: [
+                blueLowOpac,
+                purpleLowOpac,
+                blue,
+              ],
+              hoverBorderWidth: 2,
+              borderWidth: 0,
+            }
+          ]
+        }
       });
     }
   }
