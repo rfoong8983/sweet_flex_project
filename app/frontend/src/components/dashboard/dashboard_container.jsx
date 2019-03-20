@@ -3,6 +3,8 @@ import LineGraph from './dashboard_graphs/line_graph';
 import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
+import { connect } from 'react-redux'
+import TweetList from './tweet_list'
 // import '../../css/dashboard.css';
 
 class DashboardContainer extends Component {
@@ -18,6 +20,13 @@ class DashboardContainer extends Component {
 
   componentWillMount() {
     this.getGraphData();
+  }
+
+  componentDidUpdate(){
+    // debugger;
+  }
+  componentWillReceiveProps(){
+    // debugger;
   }
 
   getGraphData() {
@@ -56,7 +65,6 @@ class DashboardContainer extends Component {
           }
         ]
       },
-
       //line graph (sentiment over time for specific hashtag)
       lineGraphData: {
         labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
@@ -151,6 +159,7 @@ class DashboardContainer extends Component {
               <LineGraph graphData={this.state.lineGraphData} />
               <RadarGraph graphData={this.state.radarGraphData} />
               <DoughnutGraph graphData={this.state.doughnutGraphData} />
+              <TweetList tweets={this.props.allTweets} />
             </div>
           </div>
         </div>
@@ -158,6 +167,14 @@ class DashboardContainer extends Component {
       </div>
     )
   }
+
 }
 
-export default DashboardContainer;
+
+const msp = state => ({
+  allTweets: state.entities.tweets.allTweets,
+  watsonDocTones: state.entities.watson.documentTones,
+  watsonSentenceTones: state.entities.watson.sentenceTones
+ });
+ 
+ export default connect(msp)(DashboardContainer);

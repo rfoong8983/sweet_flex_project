@@ -61,7 +61,7 @@ class NavBar extends React.Component {
     openModal(e) {
       e.preventDefault();
       this.props.openModal('form');
-
+      
     }
 
     render () {
