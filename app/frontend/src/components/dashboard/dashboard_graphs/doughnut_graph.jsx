@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 class DoughnutGraph extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      graphData: this.props.graphData
-    };
-  }
-
   static defaultProps = {
     displayTitle: true,
     displayLegend: true,
@@ -21,7 +14,7 @@ class DoughnutGraph extends Component{
     return(
         <div className="graph-size">
           <Doughnut
-            data={this.state.graphData}
+            data={this.props.graphData}
             options={{
               responsive: true,
               maintainAspectRatio: false,
