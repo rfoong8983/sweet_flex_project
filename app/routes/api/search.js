@@ -41,7 +41,7 @@ router.post('/twitter', (req, res) => {
           count: 100,
           lang: 'en',
           tweet_mode: 'extended',
-          result_type: 'mixed' }, 
+          result_type: 'recent' }, 
         (err, data, response) => { 
           data.statuses.forEach(status => { 
             allTweets.push({
