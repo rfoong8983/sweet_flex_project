@@ -38,6 +38,23 @@ class DashboardContainer extends Component {
     return sentenceTonesHash;
   }
 
+  getTweetsWithTones() {
+    const { allTweets, watsonSentenceTones } = this.props;
+    let res = [];
+    for (let i = 0; i < watsonSentenceTones.length; i++) {
+      let tweetSubstring = watsonSentenceTones[i].text;
+      let tweetTones = watsonSentenceTones[i].tones;
+      for (let j = 0; j < allTweets.length; j++) {
+        let tweetText = allTweets[j].fullText;
+        let tweetTime = allTweets[j].tweetTime
+        if (tweetText.includes(tweetSubstring)) {
+          res.push([tweetTime, tweetTones]);
+        }
+      }
+    }
+    return res;
+  }
+
   componentDidUpdate(oldProps) {
     if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
       const purple = 'rgba(118, 60, 234, 1)';
@@ -49,6 +66,7 @@ class DashboardContainer extends Component {
       const none = 'rgba(0, 0, 0, 0)';
       
       const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
+      const res = this.getTweetsWithTones();
 
       this.setState({
         radarGraphData: {
