@@ -41,13 +41,15 @@ router.post('/twitter', (req, res) => {
           count: 100,
           lang: 'en',
           tweet_mode: 'extended',
-          result_type: 'mixed' }, 
+          result_type: 'recent' }, 
         (err, data, response) => { 
           data.statuses.forEach(status => { 
             allTweets.push({
               fullText: status.full_text.replace(/\n/g, " "),
               screenName: status.user.screen_name,
-              userName: status.user.name
+              userName: status.user.name,
+              tweetTime: status.created_at,
+              location: status.place
             });
 
             allText += status.full_text; 
