@@ -36,6 +36,19 @@ class NavBar extends React.Component {
   }
 
 
+
+            // if (this.props.location.pathname === '/dashboard') {
+            //   window.location.reload();
+            // } else {
+            //   this.props.history.push('/dashboard');
+            // }
+        }
+    }
+    toHome() {
+      return (e) => {
+        this.props.history.push("/");
+      };
+      
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       this.props.search(this.state.search);
@@ -49,8 +62,10 @@ class NavBar extends React.Component {
       // } else {
       //   this.props.history.push('/dashboard');
       // }
+      
     }
   }
+
 
   toHome() {
     return (e) => {
