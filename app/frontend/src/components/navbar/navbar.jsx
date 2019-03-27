@@ -64,7 +64,6 @@ class NavBar extends React.Component {
       if (this.props.location.pathname !== '/dashboard') {
         this.props.history.push('/dashboard');
       }
-
       // if (this.props.location.pathname === '/dashboard') {
       //   window.location.reload();
       // } else {
