@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LineGraph from './dashboard_graphs/line_graph';
 import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
+import { connect } from 'react-redux'
+import TweetList from './tweet_list'
 // import '../../css/dashboard.css';
 
 class DashboardContainer extends Component {
@@ -18,6 +21,93 @@ class DashboardContainer extends Component {
 
   componentWillMount() {
     this.getGraphData();
+  }
+
+  
+  componentDidUpdate(){
+    // debugger;
+  }
+  componentWillReceiveProps(){
+    // debugger;
+        
+  getSentenceTones() {
+    const sentenceTonesHash = {};
+    let sentenceTones = this.props.watsonSentenceTones;
+    for (let i = 0; i < sentenceTones.length; i++) {
+      let tones = sentenceTones[i].tones;
+      for (let j = 0; j < tones.length; j++) {
+        let tone = tones[j];
+        if (sentenceTonesHash[tone.tone_name]) {
+          sentenceTonesHash[tone.tone_name] += tone.score;
+        } else {
+          sentenceTonesHash[tone.tone_name] = tone.score;
+        }
+      }
+    }
+    return sentenceTonesHash;
+  }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
+      const purple = 'rgba(118, 60, 234, 1)';
+      const purpleLowOpac = 'rgba(118, 0, 234, .5)';
+      const purpleBorder = 'rgba(118, 0, 234, 1)';
+      const blue = 'rgba(53, 0, 212, 1)';
+      const blueLowOpac = 'rgba(53, 0, 212, .5)';
+      const blueBorder = 'rgba(53, 0, 212, 1)';
+      const none = 'rgba(0, 0, 0, 0)';
+      
+      const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
+
+      this.setState({
+        radarGraphData: {
+          labels: tones,
+          datasets: [
+            {
+              label: 'hashtag 1', // hashtag searched
+              data: toneData,
+              borderColor: blue,
+              lineTension: 0,
+              borderWidth: 2,
+              backgroundColor: blueLowOpac,
+              pointBackgroundColor: "black",
+              pointBorderColor: blueBorder,
+              pointBorderWidth: 2,
+              pointRadius: 3
+            }
+          ]
+        }, 
+        doughnutGraphData: {
+          labels: tones,
+          datasets: [
+            {
+              data: toneData,
+              hoverBorderColor: [
+                blueBorder,
+                purpleLowOpac, 
+                blue
+              ],
+              backgroundColor: [
+                blueLowOpac,
+                purpleLowOpac,
+                blue,
+              ],
+              hoverBorderWidth: 2,
+              borderWidth: 0,
+            }
+          ]
+        }
+      });
+    }
+  }
+
+  getRadarGraphData(sentenceTones) {
+    let tones = Object.keys(sentenceTones);
+    let toneData = [];
+    for (let i = 0; i < tones.length; i++) {
+      toneData.push(sentenceTones[tones[i]]);
+    }
+    return [tones, toneData];
   }
 
   getGraphData() {
@@ -56,7 +146,6 @@ class DashboardContainer extends Component {
           }
         ]
       },
-
       //line graph (sentiment over time for specific hashtag)
       lineGraphData: {
         labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
@@ -151,6 +240,7 @@ class DashboardContainer extends Component {
               <LineGraph graphData={this.state.lineGraphData} />
               <RadarGraph graphData={this.state.radarGraphData} />
               <DoughnutGraph graphData={this.state.doughnutGraphData} />
+              <TweetList tweets={this.props.allTweets} />
             </div>
           </div>
         </div>
@@ -158,6 +248,14 @@ class DashboardContainer extends Component {
       </div>
     )
   }
+
 }
 
-export default DashboardContainer;
+
+const msp = state => ({
+  allTweets: state.entities.tweets.allTweets, 
+  watsonDocTones: state.entities.watson.documentTones,
+  watsonSentenceTones: state.entities.watson.sentenceTones
+});
+
+export default connect(msp)(DashboardContainer);

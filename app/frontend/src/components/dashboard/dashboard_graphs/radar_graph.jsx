@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { Radar } from 'react-chartjs-2';
 
 class RadarGraph extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      graphData: this.props.graphData
-    };
-  }
-  
   render(){
     const gray = "rgba(40, 40, 40, 1)";
     const white = "rgba(255,255,255,0.9";
@@ -16,7 +9,7 @@ class RadarGraph extends Component{
     return(
         <div className="graph-size">
           <Radar
-            data={this.state.graphData}
+            data={this.props.graphData}
             options={{
               scale:{
                 gridLines: {
