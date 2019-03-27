@@ -14,6 +14,7 @@ class NavBar extends React.Component {
       search: ""
     };  
     this.handleLogout = this.handleLogout.bind(this); 
+    this.pushToProfile = this.pushToProfile.bind(this);
     this.toHome = this.toHome.bind(this);  
     this.openModal = this.openModal.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -33,6 +34,12 @@ class NavBar extends React.Component {
   handleLogout(e) {
     e.preventDefault();
     this.props.logout();
+    if (this.props.history !== '/') this.props.history.push('/');
+  }
+
+  pushToProfile(e) {
+    e.preventDefault();
+    this.props.history.push('/profile');
   }
 
 
@@ -44,11 +51,11 @@ class NavBar extends React.Component {
             // }
         
         
-    toHome() {
-      return (e) => {
-        this.props.history.push("/");
-      };
-    }
+  toHome() {
+    return (e) => {
+      this.props.history.push("/");
+    };
+  }
       
   handleKeyPress(e) {
     if (e.key === 'Enter') {
@@ -67,12 +74,6 @@ class NavBar extends React.Component {
     }
   }
 
-
-  toHome() {
-    return (e) => {
-    this.props.history.push("/")
-    };
-  }
 
   openModal(e) {
     e.preventDefault();
@@ -98,7 +99,7 @@ class NavBar extends React.Component {
         <div className="navbar-buttons flex-right-row">
           <div className="profile flex-center">
           <a href="" className="navbar-button-style" 
-            onClick={this.handleLogout}>
+            onClick={this.props.currentUser ? this.pushToProfile : this.handleLogout}>
             {this.props.currentUser ? 
             <div className="navbar-buttons-style">
               <div href="" className="navbar-button-style">

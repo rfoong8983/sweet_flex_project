@@ -31,6 +31,7 @@ class DashboardContainer extends Component {
   }
   componentWillReceiveProps(){
     // debugger;
+  }
         
   getSentenceTones() {
     const sentenceTonesHash = {};
