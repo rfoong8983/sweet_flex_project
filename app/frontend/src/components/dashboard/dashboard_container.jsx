@@ -4,8 +4,9 @@ import LineGraph from './dashboard_graphs/line_graph';
 import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
-import { connect } from 'react-redux'
-import TweetList from './tweet_list'
+import ScatterGraph from './dashboard_graphs/scatter_graph';
+import { watchFile } from 'fs';
+import TweetList from './tweet_list';
 // import '../../css/dashboard.css';
 
 class DashboardContainer extends Component {
@@ -15,7 +16,8 @@ class DashboardContainer extends Component {
       barGraphData: {},
       lineGraphData: {},
       radarGraphData: {},
-      doughnutGraphData: {}
+      doughnutGraphData: {},
+      scatterGraphData: {}
     };
   }
 
@@ -128,6 +130,38 @@ class DashboardContainer extends Component {
     };
 
     this.setState({
+
+      scatterGraphData: {
+        datasets: [
+          {
+            label: 'Joy',
+            data: [
+              {x: 20, y: 20},
+              {x: 30, y: 30},
+              {x: 40, y: 40},
+              {x: 50, y: 50},
+              {x: 20, y: 20},
+              {x: 40, y: 45},
+              {x: 75, y: 0}
+            ],
+            backgroundColor: blue,
+          },
+          {
+            label: 'Sadness',
+            data: [
+              {x: 55, y: 20},
+              {x: 72, y: 63},
+              {x: 89, y: 23},
+              {x: 21, y: 15},
+              {x: 54, y: 11},
+              {x: 32, y: 45},
+              {x: 8, y: 0}
+            ],
+            backgroundColor: purple
+          }
+        ],
+
+      },
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       barGraphData: {
         labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
@@ -236,6 +270,7 @@ class DashboardContainer extends Component {
           <div className="dashboard">
             <div className="flex-col-center">
               <div className="dashboard-text">#Hashtag Analysis</div>
+              <ScatterGraph graphData={this.state.scatterGraphData} />
               <BarGraph graphData={this.state.barGraphData} />  
               <LineGraph graphData={this.state.lineGraphData} />
               <RadarGraph graphData={this.state.radarGraphData} />
