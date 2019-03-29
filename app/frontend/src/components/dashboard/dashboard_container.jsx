@@ -185,14 +185,18 @@ class DashboardContainer extends Component {
             label: 'Joy',
             data: [
               {x: 20, y: 20},
+              {x: 20, y: 20},
               {x: 30, y: 30},
               {x: 40, y: 40},
-              {x: 50, y: 50},
-              {x: 20, y: 20},
               {x: 40, y: 45},
+              {x: 50, y: 50},
               {x: 75, y: 0}
             ],
             backgroundColor: blue,
+            showLine: true,
+            fill: false,
+            borderColor: blue,
+            borderWidth: 2
           },
           {
             label: 'Sadness',
@@ -205,7 +209,11 @@ class DashboardContainer extends Component {
               {x: 32, y: 45},
               {x: 8, y: 0}
             ],
-            backgroundColor: purple
+            backgroundColor: purple,
+            showLine: true,
+            fill:false,
+            borderColor: purple,
+            borderWidth: 2
           }
         ],
 
