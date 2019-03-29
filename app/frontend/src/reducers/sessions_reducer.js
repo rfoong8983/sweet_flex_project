@@ -25,10 +25,18 @@ const sessionsReducer = (oldState=initialState, action) => {
         default:
             return ( 
                 {
-                    ...oldState,
-                    isAuthenticated: !!action.currentUser,
-                    currentUser: action.currentUser
+                    ...oldState
                 }
+
+                //     REMOVING second two keys --
+                //     ON DEFAULT (aka other actions),
+                //     action.currentUser will be undefined
+
+                // {
+                //     ...oldState,
+                //     isAuthenticated: !!action.currentUser,
+                //     currentUser: action.currentUser
+                // }
             );
     }
 };

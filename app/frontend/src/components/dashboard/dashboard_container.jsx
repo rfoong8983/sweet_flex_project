@@ -6,7 +6,8 @@ import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
 import ScatterGraph from './dashboard_graphs/scatter_graph';
 import Loader from 'react-loader-spinner';
-
+import { watchFile } from 'fs';
+import TweetList from './tweet_list';
 // import '../../css/dashboard.css';
 
 class DashboardContainer extends Component {
@@ -20,11 +21,7 @@ class DashboardContainer extends Component {
       scatterGraphData: {}
     };
   }
-
-  componentWillMount() {
-    // this.getGraphData();
-  }
-
+        
   getSentenceTones() {
     const sentenceTonesHash = {};
     let sentenceTones = this.props.watsonSentenceTones;
@@ -181,6 +178,38 @@ class DashboardContainer extends Component {
     };
 
     this.setState({
+
+      scatterGraphData: {
+        datasets: [
+          {
+            label: 'Joy',
+            data: [
+              {x: 20, y: 20},
+              {x: 30, y: 30},
+              {x: 40, y: 40},
+              {x: 50, y: 50},
+              {x: 20, y: 20},
+              {x: 40, y: 45},
+              {x: 75, y: 0}
+            ],
+            backgroundColor: blue,
+          },
+          {
+            label: 'Sadness',
+            data: [
+              {x: 55, y: 20},
+              {x: 72, y: 63},
+              {x: 89, y: 23},
+              {x: 21, y: 15},
+              {x: 54, y: 11},
+              {x: 32, y: 45},
+              {x: 8, y: 0}
+            ],
+            backgroundColor: purple
+          }
+        ],
+
+      },
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
         datasets: [
@@ -237,7 +266,6 @@ class DashboardContainer extends Component {
           }
         ]
       },
-
       //line graph (sentiment over time for specific hashtag)
       lineGraphData: {
         labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
@@ -322,6 +350,7 @@ class DashboardContainer extends Component {
 
   render() {
     //replace later with data passed in through container
+<<<<<<< HEAD
       if (!Object.keys(this.state.radarGraphData).length) {
         return (
           <Loader 
@@ -346,12 +375,28 @@ class DashboardContainer extends Component {
                   </div>
                 </div>
               </div>
+=======
+    return (
+      <div>
+        <div className="dashboard-container">
+          <div className="dashboard">
+            <div className="flex-col-center">
+              <div className="dashboard-text">#Hashtag Analysis</div>
+              <ScatterGraph graphData={this.state.scatterGraphData} />
+              <BarGraph graphData={this.state.barGraphData} />  
+              <LineGraph graphData={this.state.lineGraphData} />
+              <RadarGraph graphData={this.state.radarGraphData} />
+              <DoughnutGraph graphData={this.state.doughnutGraphData} />
+              <TweetList tweets={this.props.allTweets} />
+>>>>>>> master
             </div>
           </div>
         )
       }
   }
+
 }
+
 
 const msp = state => ({
   allTweets: state.entities.tweets.allTweets, 
