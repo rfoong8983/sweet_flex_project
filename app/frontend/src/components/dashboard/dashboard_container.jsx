@@ -5,6 +5,7 @@ import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
 import ScatterGraph from './dashboard_graphs/scatter_graph';
+import Loader from 'react-loader-spinner';
 import { watchFile } from 'fs';
 import TweetList from './tweet_list';
 // import '../../css/dashboard.css';
@@ -19,18 +20,6 @@ class DashboardContainer extends Component {
       doughnutGraphData: {},
       scatterGraphData: {}
     };
-  }
-
-  componentWillMount() {
-    this.getGraphData();
-  }
-
-  
-  componentDidUpdate(){
-    // debugger;
-  }
-  componentWillReceiveProps(){
-    // debugger;
   }
         
   getSentenceTones() {
@@ -50,8 +39,26 @@ class DashboardContainer extends Component {
     return sentenceTonesHash;
   }
 
+  getTweetsWithTones() {
+    const { allTweets, watsonSentenceTones } = this.props;
+    let res = [];
+    for (let i = 0; i < watsonSentenceTones.length; i++) {
+      let tweetSubstring = watsonSentenceTones[i].text;
+      let tweetTones = watsonSentenceTones[i].tones;
+      for (let j = 0; j < allTweets.length; j++) {
+        let tweetText = allTweets[j].fullText;
+        let tweetTime = allTweets[j].tweetTime
+        if (tweetText.includes(tweetSubstring)) {
+          res.push([tweetTime, tweetTones]);
+        }
+      }
+    }
+    return res;
+  }
+
   componentDidUpdate(oldProps) {
     if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
+      this.setState({});
       const purple = 'rgba(118, 60, 234, 1)';
       const purpleLowOpac = 'rgba(118, 0, 234, .5)';
       const purpleBorder = 'rgba(118, 0, 234, 1)';
@@ -61,6 +68,7 @@ class DashboardContainer extends Component {
       const none = 'rgba(0, 0, 0, 0)';
       
       const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
+      const res = this.getTweetsWithTones();
 
       this.setState({
         radarGraphData: {
@@ -99,7 +107,46 @@ class DashboardContainer extends Component {
               borderWidth: 0,
             }
           ]
-        }
+        },
+        scatterGraphData: {
+        labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
+          datasets: [
+            {
+              label: 'Joy',
+              data: [
+                {x: 20, y: 20},
+                {x: 20, y: 20},
+                {x: 30, y: 30},
+                {x: 40, y: 40},
+                {x: 40, y: 45},
+                {x: 50, y: 50},
+                {x: 75, y: 0}
+              ],
+              backgroundColor: blue,
+              showLine: true,
+              fill: false,
+              borderColor: blue,
+              borderWidth: 2
+            },
+            {
+              label: 'Sadness',
+              data: [
+                {x: 55, y: 20},
+                {x: 72, y: 63},
+                {x: 89, y: 23},
+                {x: 21, y: 15},
+                {x: 54, y: 11},
+                {x: 32, y: 45},
+                {x: 8, y: 0}
+              ],
+              backgroundColor: purple,
+              showLine: true,
+              fill:false,
+              borderColor: purple,
+              borderWidth: 2
+            }
+          ],
+        },
       });
     }
   }
@@ -164,6 +211,44 @@ class DashboardContainer extends Component {
 
       },
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
+      scatterGraphData: { 
+        datasets: [
+          {
+            label: 'Joy',
+            data: [
+              {x: "Wed Mar 27 02:39:41 +0000 2019", y: 20},
+              {x: "Wed Mar 27 02:39:41 +0000 2019", y: 20},
+              {x: 30, y: 30},
+              {x: 40, y: 40},
+              {x: 40, y: 45},
+              {x: 50, y: 50},
+              {x: 75, y: 0}
+            ],
+            backgroundColor: blue,
+            showLine: true,
+            fill: false,
+            borderColor: blue,
+            borderWidth: 2
+          },
+          {
+            label: 'Sadness',
+            data: [
+              {x: 55, y: 20},
+              {x: 72, y: 63},
+              {x: 89, y: 23},
+              {x: 21, y: 15},
+              {x: 54, y: 11},
+              {x: 32, y: 45},
+              {x: 8, y: 0}
+            ],
+            backgroundColor: purple,
+            showLine: true,
+            fill:false,
+            borderColor: purple,
+            borderWidth: 2
+          }
+        ],
+      },
       barGraphData: {
         labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
         datasets: [
@@ -265,6 +350,32 @@ class DashboardContainer extends Component {
 
   render() {
     //replace later with data passed in through container
+<<<<<<< HEAD
+      if (!Object.keys(this.state.radarGraphData).length) {
+        return (
+          <Loader 
+            type="Puff"
+            color="#00BFFF"
+            height="100"	
+            width="100" />   
+        );
+      } else {
+        return (
+          <div>
+            <div>
+              <div className="dashboard-container">
+                <div className="dashboard">
+                  <div className="flex-col-center">
+                    <div className="dashboard-text">#Hashtag Analysis</div>
+                    {/* <BarGraph graphData={this.state.barGraphData} /> 
+                    <LineGraph graphData={this.state.lineGraphData} />
+                    <ScatterGraph graphData={this.state.scatterGraphData} /> */}
+                    <RadarGraph graphData={this.state.radarGraphData} />
+                    <DoughnutGraph graphData={this.state.doughnutGraphData} />
+                  </div>
+                </div>
+              </div>
+=======
     return (
       <div>
         <div className="dashboard-container">
@@ -277,12 +388,11 @@ class DashboardContainer extends Component {
               <RadarGraph graphData={this.state.radarGraphData} />
               <DoughnutGraph graphData={this.state.doughnutGraphData} />
               <TweetList tweets={this.props.allTweets} />
+>>>>>>> master
             </div>
           </div>
-        </div>
-
-      </div>
-    )
+        )
+      }
   }
 
 }

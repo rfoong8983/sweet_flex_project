@@ -52,7 +52,7 @@ router.post('/twitter', (req, res) => {
               location: status.place
             });
 
-            allText += status.full_text; 
+            allText += status.full_text + '.'; 
           });
           res.send({
             allTweets: allTweets,
