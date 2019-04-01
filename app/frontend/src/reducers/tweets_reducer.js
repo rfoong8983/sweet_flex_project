@@ -1,6 +1,6 @@
 import { RECEIVE_TWITTER_DATA } from '../actions/search_actions';
 
-const tweetsReducer = (oldState = {}, action) => {
+const tweetsReducer = (oldState={}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
 
