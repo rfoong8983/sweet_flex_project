@@ -6,6 +6,7 @@ import { toggleLoader } from './loader_actions';
 export const RECEIVE_SEARCH_DATA = "RECEIVE_SEARCH_DATA";
 export const RECEIVE_WATSON_DATA = "RECEIVE_WATSON_DATA";
 export const RECEIVE_TWITTER_DATA = "RECEIVE_TWITTER_DATA";
+export const RECEIVE_LAST_SEARCH = "RECEIVE_LAST_SEARCH";
 
 export const receiveSearchData = searchData => ({
   type: RECEIVE_SEARCH_DATA,
@@ -42,6 +43,10 @@ export const receiveSearch = searchData => dispatch => {
   SearchAPIUtil.saveSearch(searchData)
     .then(searchData => dispatch(receiveSearchData(searchData)))
     .then(() => dispatch(fetchTwitterData(searchData)))
-    .then(res => dispatch(fetchWatsonData(res.twitterData.data.allText)))
+    .then(res => {
+      localStorage.tweets = JSON.stringify(res.twitterData.data.allTweets);
+      dispatch(fetchWatsonData(res.twitterData.data.allText))
+      }
+    )
     .then(() => dispatch(toggleLoader(false)));
 };

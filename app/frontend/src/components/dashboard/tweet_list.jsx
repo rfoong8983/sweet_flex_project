@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TweetList extends Component{
+class TweetList extends React.Component {
     constructor(props){
         super(props);
         this.tweets = this.props.tweets;
@@ -13,7 +13,6 @@ class TweetList extends Component{
     }
 
     render(){
-        // debugger;
         let tweets;
         if (this.tweets !== undefined){
             tweets = 
@@ -24,29 +23,19 @@ class TweetList extends Component{
                         </li>
                     ) 
                 })
+        } else if (localStorage.tweets !== undefined) { // use tweets that have been previously stored in localStorage from prior search
+            tweets = JSON.parse(localStorage.getItem('tweets')).map((tweet, idx) => {
+                return (
+                    <li key={idx} className="tweet-index">
+                        {tweet.fullText}
+                    </li>
+                )
+            })
         }
 
-        // if (this.state.tweets !== undefined){
-        //     this.tweetList = 
-        //         this.state.tweets.map((tweet,idx) => {
-        //             return (
-        //                 <li key={idx} className="tweet-index"> 
-        //                     {tweet.fullText}
-        //                 </li>
-        //             ) 
-        //         })
-        // }
-        // debugger
-        // const tweets = this.tweets.map((tweet, idx) => {
-        //     return (
-        //         <li key={idx} className="tweet-index">
-        //             {tweet.fullText}
-        //         </li>
-        //     )
-        // })
         return (
             <div>
-                <ul>
+                <ul className="tweets">
                     {tweets}
                 </ul>
             </div>

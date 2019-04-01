@@ -7,8 +7,8 @@ import BarGraph from './dashboard_graphs/bar_graph';
 import ScatterGraph from './dashboard_graphs/scatter_graph';
 import Loader from 'react-loader-spinner';
 import { toggleLoader } from '../../actions/loader_actions';
+import TweetList from './tweet_list_container';
 // import { watchFile } from 'fs';
-import TweetList from './tweet_list';
 // import '../../css/dashboard.css';
 
 class DashboardContainer extends Component {
@@ -48,7 +48,7 @@ class DashboardContainer extends Component {
       let tweetTones = watsonSentenceTones[i].tones;
       for (let j = 0; j < allTweets.length; j++) {
         let tweetText = allTweets[j].fullText;
-        let tweetTime = allTweets[j].tweetTime
+        let tweetTime = allTweets[j].tweetTime;
         if (tweetText.includes(tweetSubstring)) {
           res.push([tweetTime, tweetTones]);
         }
@@ -57,10 +57,6 @@ class DashboardContainer extends Component {
     return res;
   }
 
-  componentDidMount() {
-    this.props.toggleLoader(true);
-  }
-  
   componentWillMount() {
     this.getGraphData();
   }
@@ -366,16 +362,6 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    //replace later with data passed in through container
-    // if (!Object.keys(this.state.radarGraphData).length) {
-    //   return (
-    //     <Loader 
-    //       type="Puff"
-    //       color="#00BFFF"
-    //       height="100"	
-    //       width="100" />   
-    //   );
-    console.log(this.props.loader);
     if (this.props.loader) {
       return (
         <Loader 
@@ -385,7 +371,6 @@ class DashboardContainer extends Component {
           width="100" />   
       );
     } else {
-      // debugger
       return (
         <div>
           <div className="dashboard-container">
@@ -397,7 +382,8 @@ class DashboardContainer extends Component {
                 <LineGraph graphData={this.state.lineGraphData} />
                 <RadarGraph graphData={this.state.radarGraphData} />
                 <DoughnutGraph graphData={this.state.doughnutGraphData} />
-                <TweetList tweets={this.props.allTweets} />
+                <TweetList />
+                {/* <TweetList tweets={this.props.allTweets} /> */}
               </div>
             </div>
           </div>
@@ -410,7 +396,6 @@ class DashboardContainer extends Component {
 
 
 const msp = state => {
-  // debugger
   return {
     allTweets: state.entities.tweets.allTweets,
     watsonDocTones: state.entities.watson.documentTones,
