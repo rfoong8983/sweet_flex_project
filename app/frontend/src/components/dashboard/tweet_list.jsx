@@ -34,11 +34,9 @@ class TweetList extends React.Component {
         }
 
         return (
-            <div>
-                <ul className="tweets">
-                    {tweets}
-                </ul>
-            </div>
+            <ul className="tweets">
+                {tweets}
+            </ul>
         )
     }
 }
