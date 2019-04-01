@@ -6,7 +6,8 @@ import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
 import ScatterGraph from './dashboard_graphs/scatter_graph';
 import Loader from 'react-loader-spinner';
-import { watchFile } from 'fs';
+import { toggleLoader } from '../../actions/loader_actions';
+// import { watchFile } from 'fs';
 import TweetList from './tweet_list';
 // import '../../css/dashboard.css';
 
@@ -56,19 +57,27 @@ class DashboardContainer extends Component {
     return res;
   }
 
+  componentDidMount() {
+    this.props.toggleLoader(true);
+  }
+  
+  componentWillMount() {
+    this.getGraphData();
+  }
+
   componentDidUpdate(oldProps) {
     if (oldProps.watsonSentenceTones !== this.props.watsonSentenceTones) {
       this.setState({});
       const purple = 'rgba(118, 60, 234, 1)';
       const purpleLowOpac = 'rgba(118, 0, 234, .5)';
-      const purpleBorder = 'rgba(118, 0, 234, 1)';
+      // const purpleBorder = 'rgba(118, 0, 234, 1)';
       const blue = 'rgba(53, 0, 212, 1)';
       const blueLowOpac = 'rgba(53, 0, 212, .5)';
       const blueBorder = 'rgba(53, 0, 212, 1)';
-      const none = 'rgba(0, 0, 0, 0)';
+      // const none = 'rgba(0, 0, 0, 0)';
       
       const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
-      const res = this.getTweetsWithTones();
+      // const res = this.getTweetsWithTones();
 
       this.setState({
         radarGraphData: {
@@ -179,45 +188,45 @@ class DashboardContainer extends Component {
 
     this.setState({
 
-      scatterGraphData: {
-        datasets: [
-          {
-            label: 'Joy',
-            data: [
-              {x: 20, y: 20},
-              {x: 20, y: 20},
-              {x: 30, y: 30},
-              {x: 40, y: 40},
-              {x: 40, y: 45},
-              {x: 50, y: 50},
-              {x: 75, y: 0}
-            ],
-            backgroundColor: blue,
-            showLine: true,
-            fill: false,
-            borderColor: blue,
-            borderWidth: 2
-          },
-          {
-            label: 'Sadness',
-            data: [
-              {x: 55, y: 20},
-              {x: 72, y: 63},
-              {x: 89, y: 23},
-              {x: 21, y: 15},
-              {x: 54, y: 11},
-              {x: 32, y: 45},
-              {x: 8, y: 0}
-            ],
-            backgroundColor: purple,
-            showLine: true,
-            fill:false,
-            borderColor: purple,
-            borderWidth: 2
-          }
-        ],
+      // scatterGraphData: {
+      //   datasets: [
+      //     {
+      //       label: 'Joy',
+      //       data: [
+      //         {x: 20, y: 20},
+      //         {x: 20, y: 20},
+      //         {x: 30, y: 30},
+      //         {x: 40, y: 40},
+      //         {x: 40, y: 45},
+      //         {x: 50, y: 50},
+      //         {x: 75, y: 0}
+      //       ],
+      //       backgroundColor: blue,
+      //       showLine: true,
+      //       fill: false,
+      //       borderColor: blue,
+      //       borderWidth: 2
+      //     },
+      //     {
+      //       label: 'Sadness',
+      //       data: [
+      //         {x: 55, y: 20},
+      //         {x: 72, y: 63},
+      //         {x: 89, y: 23},
+      //         {x: 21, y: 15},
+      //         {x: 54, y: 11},
+      //         {x: 32, y: 45},
+      //         {x: 8, y: 0}
+      //       ],
+      //       backgroundColor: purple,
+      //       showLine: true,
+      //       fill:false,
+      //       borderColor: purple,
+      //       borderWidth: 2
+      //     }
+      //   ],
 
-      },
+      // },
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
         datasets: [
@@ -358,58 +367,62 @@ class DashboardContainer extends Component {
 
   render() {
     //replace later with data passed in through container
-<<<<<<< HEAD
-      if (!Object.keys(this.state.radarGraphData).length) {
-        return (
-          <Loader 
-            type="Puff"
-            color="#00BFFF"
-            height="100"	
-            width="100" />   
-        );
-      } else {
-        return (
-          <div>
-            <div>
-              <div className="dashboard-container">
-                <div className="dashboard">
-                  <div className="flex-col-center">
-                    <div className="dashboard-text">#Hashtag Analysis</div>
-                    {/* <BarGraph graphData={this.state.barGraphData} /> 
-                    <LineGraph graphData={this.state.lineGraphData} />
-                    <ScatterGraph graphData={this.state.scatterGraphData} /> */}
-                    <RadarGraph graphData={this.state.radarGraphData} />
-                    <DoughnutGraph graphData={this.state.doughnutGraphData} />
-                  </div>
-                </div>
+    // if (!Object.keys(this.state.radarGraphData).length) {
+    //   return (
+    //     <Loader 
+    //       type="Puff"
+    //       color="#00BFFF"
+    //       height="100"	
+    //       width="100" />   
+    //   );
+    console.log(this.props.loader);
+    if (this.props.loader) {
+      return (
+        <Loader 
+          type="Puff"
+          color="#00BFFF"
+          height="100"	
+          width="100" />   
+      );
+    } else {
+      // debugger
+      return (
+        <div>
+          <div className="dashboard-container">
+            <div className="dashboard">
+              <div className="flex-col-center">
+                <div className="dashboard-text">#Hashtag Analysis</div>
+                <ScatterGraph graphData={this.state.scatterGraphData} />
+                <BarGraph graphData={this.state.barGraphData} />  
+                <LineGraph graphData={this.state.lineGraphData} />
+                <RadarGraph graphData={this.state.radarGraphData} />
+                <DoughnutGraph graphData={this.state.doughnutGraphData} />
+                <TweetList tweets={this.props.allTweets} />
               </div>
-=======
-    return (
-      <div>
-        <div className="dashboard-container">
-          <div className="dashboard">
-            <div className="flex-col-center">
-              <div className="dashboard-text">#Hashtag Analysis</div>
-              <ScatterGraph graphData={this.state.scatterGraphData} />
-              <BarGraph graphData={this.state.barGraphData} />  
-              <LineGraph graphData={this.state.lineGraphData} />
-              <RadarGraph graphData={this.state.radarGraphData} />
-              <DoughnutGraph graphData={this.state.doughnutGraphData} />
-              <TweetList tweets={this.props.allTweets} />
->>>>>>> master
             </div>
           </div>
-        )
-      }
+        </div>
+      )
+    }
   }
 
 }
 
 
-const msp = state => ({
-  allTweets: state.entities.tweets.allTweets, 
-  watsonDocTones: state.entities.watson.documentTones,
-  watsonSentenceTones: state.entities.watson.sentenceTones
-});
+const msp = state => {
+  // debugger
+  return {
+    allTweets: state.entities.tweets.allTweets,
+    watsonDocTones: state.entities.watson.documentTones,
+    watsonSentenceTones: state.entities.watson.sentenceTones,
+    loader: state.ui.loader
+  }
+};
 
-export default connect(msp)(DashboardContainer);
+const mdp = dispatch => {
+  return {
+    toggleLoader: (bool) => dispatch(toggleLoader(bool))
+  }
+};
+
+export default connect(msp, mdp)(DashboardContainer);

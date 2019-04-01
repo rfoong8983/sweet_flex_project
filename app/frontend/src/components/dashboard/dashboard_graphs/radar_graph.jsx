@@ -4,7 +4,7 @@ import { Radar } from 'react-chartjs-2';
 class RadarGraph extends Component{
   render(){
     const gray = "rgba(40, 40, 40, 1)";
-    const white = "rgba(255,255,255,0.9";
+    // const white = "rgba(255,255,255,0.9";
 
     return(
         <div className="graph-size">
@@ -35,7 +35,7 @@ class RadarGraph extends Component{
               title:{
                 display: true,
                 text:"Radar Graph",
-                fontSize: 25,
+                // fontSize: 25,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20,

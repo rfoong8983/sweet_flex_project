@@ -44,7 +44,7 @@ class BarGraph extends Component{
               title:{
                 display: true,
                 text:"Bar Graph",
-                fontSize: 25,
+                // fontSize: 25,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20
