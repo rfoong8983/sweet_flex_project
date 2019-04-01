@@ -374,21 +374,56 @@ class DashboardContainer extends Component {
       return (
         <div>
           <div className="dashboard-container">
+
             <div className="dashboard">
-              <div className="flex-col-center">
-                <div className="dashboard-text">#Hashtag Analysis</div>
-                <ScatterGraph graphData={this.state.scatterGraphData} />
-                <BarGraph graphData={this.state.barGraphData} />  
-                <LineGraph graphData={this.state.lineGraphData} />
-                <RadarGraph graphData={this.state.radarGraphData} />
-                <DoughnutGraph graphData={this.state.doughnutGraphData} />
-                <TweetList />
-                {/* <TweetList tweets={this.props.allTweets} /> */}
+
+              
+              <div className="dashboard-text">#Hashtag Analysis</div>
+              <div className="body-wrap">
+                <div className="flex-col-left">
+                  <TweetList />
+                </div>
+                <div className="flex-col-center">
+                  <div className="topTwoCharts">
+                    <ScatterGraph graphData={this.state.scatterGraphData} />
+                    <BarGraph graphData={this.state.barGraphData} />
+                  </div>
+                </div>
+                <div className="flex-col-right">
+                  <LineGraph graphData={this.state.lineGraphData} />
+                  <div className="radar-donut-wrap">
+                    <RadarGraph graphData={this.state.radarGraphData} />
+                    <DoughnutGraph graphData={this.state.doughnutGraphData} />
+                  </div>
+                </div>
+
               </div>
+
             </div>
           </div>
         </div>
       )
+      // return (
+      //   <div>
+      //     <div className="dashboard-container">
+      //       <div className="dashboard">
+      //         <div className="flex-col-center">
+      //           <div className="dashboard-text">#Hashtag Analysis</div>
+      //           <div className="topTwoCharts">
+      //             <ScatterGraph graphData={this.state.scatterGraphData} />
+      //             <BarGraph graphData={this.state.barGraphData} />  
+      //           </div>
+      //           <LineGraph graphData={this.state.lineGraphData} />
+      //           <RadarGraph graphData={this.state.radarGraphData} />
+      //           <DoughnutGraph graphData={this.state.doughnutGraphData} />
+      //         </div>
+      //         <div className="flex-col-right">
+      //           <TweetList />
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // )
     }
   }
 
