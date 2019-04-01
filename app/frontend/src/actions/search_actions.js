@@ -1,6 +1,7 @@
 import * as SearchAPIUtil from '../util/search_api_util';
 import * as WatsonAPIUtil from '../util/watson_api_util';
 import * as TwitterAPIUtil from '../util/twitter_api_util';
+import { toggleLoader } from './loader_actions';
 
 export const RECEIVE_SEARCH_DATA = "RECEIVE_SEARCH_DATA";
 export const RECEIVE_WATSON_DATA = "RECEIVE_WATSON_DATA";
@@ -42,4 +43,5 @@ export const receiveSearch = searchData => dispatch => {
     .then(searchData => dispatch(receiveSearchData(searchData)))
     .then(() => dispatch(fetchTwitterData(searchData)))
     .then(res => dispatch(fetchWatsonData(res.twitterData.data.allText)))
+    .then(() => dispatch(toggleLoader(false)));
 };

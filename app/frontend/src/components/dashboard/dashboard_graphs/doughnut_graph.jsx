@@ -9,7 +9,7 @@ class DoughnutGraph extends Component{
   }
   
   render() {
-    const white = "rgba(255,255,255,0.9";
+    // const white = "rgba(255,255,255,0.9";
 
     return(
         <div className="graph-size">
@@ -21,7 +21,7 @@ class DoughnutGraph extends Component{
               title:{
                 display: true,
                 text:"Doughnut Graph",
-                fontSize: 25,
+                // fontSize: 50,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20,

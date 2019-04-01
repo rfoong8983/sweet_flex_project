@@ -18,7 +18,6 @@ const App = () => (
       <Route exact path="/dashboard" component={DashboardContainer}/>
       <Route exact path="/profile" component={ProfileContainer}/>
       {/* <Protectedroute exact path="/profile" component={ProfileContainer}/> */}
-
       <Footer />
     </div>
 )

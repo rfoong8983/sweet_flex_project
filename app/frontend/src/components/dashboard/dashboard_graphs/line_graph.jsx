@@ -43,7 +43,7 @@ class LineGraph extends Component{
               title:{
                 display: true,
                 text:"Line Graph",
-                fontSize: 25,
+                // fontSize: 25,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20

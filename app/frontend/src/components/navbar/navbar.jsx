@@ -42,14 +42,11 @@ class NavBar extends React.Component {
     this.props.history.push('/profile');
   }
 
-
-
             // if (this.props.location.pathname === '/dashboard') {
             //   window.location.reload();
             // } else {
             //   this.props.history.push('/dashboard');
             // }
-        
         
   toHome() {
     return (e) => {
@@ -59,11 +56,13 @@ class NavBar extends React.Component {
       
   handleKeyPress(e) {
     if (e.key === 'Enter') {
+      // console.log(this.state.search);
       this.props.search(this.state.search);
       this.setState({search: ""});
       if (this.props.location.pathname !== '/dashboard') {
         this.props.history.push('/dashboard');
       }
+      this.props.toggleLoader(true);
       // if (this.props.location.pathname === '/dashboard') {
       //   window.location.reload();
       // } else {
@@ -97,23 +96,25 @@ class NavBar extends React.Component {
         </input>
         <div className="navbar-buttons flex-right-row">
           <div className="profile flex-center">
-          <a href="" className="navbar-button-style" 
-            onClick={this.props.currentUser ? this.pushToProfile : this.handleLogout}>
+          <a href="#" className="navbar-button-style" 
+            onClick={this.props.currentUser.username ? this.pushToProfile : this.handleLogout}>
             {this.props.currentUser ? 
             <div className="navbar-buttons-style">
-              <div href="" className="navbar-button-style">
+              <div href="#" className="navbar-button-style">
               {this.props.currentUser.username}
               </div>
             </div> :""}
           </a>
           </div>
-          {this.props.currentUser ?
+
+          {this.props.currentUser.username ?
           <div className="logout flex-center">
-          <a href="" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
+            <a href="#" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
           </div> : 
           <div className="logout flex-center">
-            <a href="" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
+            <a href="#" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
           </div>}
+
         </div>
         </div>
       </div>

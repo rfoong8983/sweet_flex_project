@@ -63,8 +63,8 @@ class Form extends React.Component {
             return (
                 <div className="mod_buttonsWrapper">
                     <div className="mod_loginSignupWrapper">
-                        <a className="mod_toLogin_link">Have an account? <span onClick={this.switchFormType('login')} className="mod_toLoginSpan">Sign-in</span></a>
-                        <a className="mod_continue_link"
+                        <a href="#" className="mod_toLogin_link">Have an account? <span onClick={this.switchFormType('login')} className="mod_toLoginSpan">Sign-in</span></a>
+                        <a href = "#" className="mod_continue_link"
                             onClick={this.props.closeModal}
                         ><span className="mod_toLoginSpan">Continue without an account</span></a>
 
