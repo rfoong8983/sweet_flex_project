@@ -5,7 +5,6 @@ class RadarGraph extends Component{
   render(){
     const gray = "rgba(40, 40, 40, 1)";
     // const white = "rgba(255,255,255,0.9";
-
     return(
         <div className="graph-size">
           <Radar
