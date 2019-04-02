@@ -8,6 +8,7 @@ import ScatterGraph from './dashboard_graphs/scatter_graph';
 import Loader from 'react-loader-spinner';
 import { toggleLoader } from '../../actions/loader_actions';
 import TweetList from './tweet_list_container';
+import Sentiment from 'sentiment';
 // import { watchFile } from 'fs';
 // import '../../css/dashboard.css';
 
@@ -21,6 +22,9 @@ class DashboardContainer extends Component {
       doughnutGraphData: {},
       scatterGraphData: {}
     };
+  }
+
+  componentDidMount() {
   }
         
   getSentenceTones() {
@@ -73,6 +77,8 @@ class DashboardContainer extends Component {
       // const none = 'rgba(0, 0, 0, 0)';
       
       const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
+      localStorage.tones = JSON.stringify(tones);
+      localStorage.toneData = JSON.stringify(toneData);
       // const res = this.getTweetsWithTones();
 
       this.setState({
@@ -182,47 +188,9 @@ class DashboardContainer extends Component {
       return res;
     };
 
+    const [tones, toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
+
     this.setState({
-
-      // scatterGraphData: {
-      //   datasets: [
-      //     {
-      //       label: 'Joy',
-      //       data: [
-      //         {x: 20, y: 20},
-      //         {x: 20, y: 20},
-      //         {x: 30, y: 30},
-      //         {x: 40, y: 40},
-      //         {x: 40, y: 45},
-      //         {x: 50, y: 50},
-      //         {x: 75, y: 0}
-      //       ],
-      //       backgroundColor: blue,
-      //       showLine: true,
-      //       fill: false,
-      //       borderColor: blue,
-      //       borderWidth: 2
-      //     },
-      //     {
-      //       label: 'Sadness',
-      //       data: [
-      //         {x: 55, y: 20},
-      //         {x: 72, y: 63},
-      //         {x: 89, y: 23},
-      //         {x: 21, y: 15},
-      //         {x: 54, y: 11},
-      //         {x: 32, y: 45},
-      //         {x: 8, y: 0}
-      //       ],
-      //       backgroundColor: purple,
-      //       showLine: true,
-      //       fill:false,
-      //       borderColor: purple,
-      //       borderWidth: 2
-      //     }
-      //   ],
-
-      // },
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
         datasets: [
@@ -308,11 +276,13 @@ class DashboardContainer extends Component {
 
       //radar graph (response to hashtag by sentiment category)
       radarGraphData: {
-        labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
+        labels: tones, // (sentiment category)
+        // labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
         datasets: [
           {
             label: 'hashtag 1', // hashtag searched
-            data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
+            data: toneData, // (sentiment value)
+            // data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
             borderColor: blue,
             lineTension: 0,
             borderWidth: 2,
@@ -324,7 +294,8 @@ class DashboardContainer extends Component {
           },
           {
             label: "hashtag 2",
-            data: [35, 19, 32, 75, 32, 62, 15],
+            data: toneData,
+            // data: [35, 19, 32, 75, 32, 62, 15],
             borderColor: purple,
             lineTension: 0,
             borderWidth: 2,
@@ -339,10 +310,12 @@ class DashboardContainer extends Component {
 
       //doughnut graph (distribution of sentiment over 100 tweets)
       doughnutGraphData: {
-        labels: ['sad','happy','angst'], // sentiment categories
+        labels: tones, // sentiment categories
+        // labels: ['sad','happy','angst'], // sentiment categories
         datasets: [
           {
-            data: [19, 73, 72], // (sentiment count by category)
+            data: toneData, // (sentiment count by category)
+            // data: [19, 73, 72], // (sentiment count by category)
             hoverBorderColor: [
               blueBorder,
               purpleLowOpac, 
@@ -403,27 +376,6 @@ class DashboardContainer extends Component {
           </div>
         </div>
       )
-      // return (
-      //   <div>
-      //     <div className="dashboard-container">
-      //       <div className="dashboard">
-      //         <div className="flex-col-center">
-      //           <div className="dashboard-text">#Hashtag Analysis</div>
-      //           <div className="topTwoCharts">
-      //             <ScatterGraph graphData={this.state.scatterGraphData} />
-      //             <BarGraph graphData={this.state.barGraphData} />  
-      //           </div>
-      //           <LineGraph graphData={this.state.lineGraphData} />
-      //           <RadarGraph graphData={this.state.radarGraphData} />
-      //           <DoughnutGraph graphData={this.state.doughnutGraphData} />
-      //         </div>
-      //         <div className="flex-col-right">
-      //           <TweetList />
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </div>
-      // )
     }
   }
 
