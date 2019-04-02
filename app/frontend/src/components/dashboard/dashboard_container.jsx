@@ -188,7 +188,6 @@ class DashboardContainer extends Component {
       return res;
     };
     
-    // debugger
     if (localStorage.tones !== undefined && localStorage.toneData !== undefined) {
       [this.tones, this.toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
     }
