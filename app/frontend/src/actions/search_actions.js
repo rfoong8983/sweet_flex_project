@@ -21,7 +21,6 @@ export const receiveTwitterData = twitterData => ({
   twitterData,
 });
 
-
 export const receiveWatsonData = watsonData => ({
   type: RECEIVE_WATSON_DATA,
   watsonData,

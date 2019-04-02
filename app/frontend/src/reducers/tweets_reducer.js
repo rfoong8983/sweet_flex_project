@@ -6,7 +6,16 @@ const tweetsReducer = (oldState={}, action) => {
 
   switch(action.type) {
     case RECEIVE_TWITTER_DATA:
-      newState.allTweets = action.twitterData.data.allTweets;
+      newState.allTweets = action.twitterData.data.allTweets.map((el, idx) => {
+        return {
+          id: idx,
+          fullText: el.fullText,
+          location: el.location,
+          screenName: el.screenName,
+          tweetTime: el.tweetTime,
+          userName: el.userName
+        };
+      });
       return newState;
     default:
       return oldState;

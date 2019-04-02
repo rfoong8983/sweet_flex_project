@@ -4,6 +4,7 @@ import LineGraph from './dashboard_graphs/line_graph';
 import RadarGraph from './dashboard_graphs/radar_graph';
 import DoughnutGraph from './dashboard_graphs/doughnut_graph';
 import BarGraph from './dashboard_graphs/bar_graph';
+import SentGraph from './dashboard_graphs/sentiment';
 import ScatterGraph from './dashboard_graphs/scatter_graph';
 import Loader from 'react-loader-spinner';
 import { toggleLoader } from '../../actions/loader_actions';
@@ -20,7 +21,8 @@ class DashboardContainer extends Component {
       lineGraphData: {},
       radarGraphData: {},
       doughnutGraphData: {},
-      scatterGraphData: {}
+      scatterGraphData: {},
+      sentGraphData: {}
     };
   }
 
@@ -70,16 +72,25 @@ class DashboardContainer extends Component {
       this.setState({});
       const purple = 'rgba(118, 60, 234, 1)';
       const purpleLowOpac = 'rgba(118, 0, 234, .5)';
-      // const purpleBorder = 'rgba(118, 0, 234, 1)';
+      const purpleBorder = 'rgba(118, 0, 234, 1)';
       const blue = 'rgba(53, 0, 212, 1)';
       const blueLowOpac = 'rgba(53, 0, 212, .5)';
       const blueBorder = 'rgba(53, 0, 212, 1)';
       // const none = 'rgba(0, 0, 0, 0)';
+
+      const barCount = (length, color) => {
+        let res = [];
+        for (let i = 0; i < length; i++) {
+          res.push(color);
+        }
+        return res;
+      };
       
       [this.tones, this.toneData] = this.getRadarGraphData(this.getSentenceTones());
       localStorage.tones = JSON.stringify(this.tones);
       localStorage.toneData = JSON.stringify(this.toneData);
-      // const res = this.getTweetsWithTones();
+      this.sentiment = this.props.sentiment;
+      localStorage.sentiment = JSON.stringify(this.sentiment);
 
       this.setState({
         radarGraphData: {
@@ -119,6 +130,7 @@ class DashboardContainer extends Component {
             }
           ]
         },
+        sentGraphData: this.sentiment,
         scatterGraphData: {
         labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
           datasets: [
@@ -192,6 +204,10 @@ class DashboardContainer extends Component {
       [this.tones, this.toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
     }
 
+    if (localStorage.sentiment !== undefined) {
+      this.sentiment = localStorage.sentiment;
+    }
+
     this.setState({
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
@@ -232,6 +248,7 @@ class DashboardContainer extends Component {
           }
         ],
       },
+      sentGraphData: JSON.parse(this.sentiment),
       barGraphData: {
         labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
         datasets: [
@@ -361,7 +378,8 @@ class DashboardContainer extends Component {
                 <div className="flex-col-center">
                   <div className="topTwoCharts">
                     <ScatterGraph graphData={this.state.scatterGraphData} />
-                    <BarGraph graphData={this.state.barGraphData} />
+                    {/* <BarGraph graphData={this.state.barGraphData} /> */}
+                    <SentGraph graphData={this.state.sentGraphData} />
                   </div>
                 </div>
                 <div className="flex-col-right">
@@ -387,6 +405,7 @@ class DashboardContainer extends Component {
 const msp = state => {
   return {
     allTweets: state.entities.tweets.allTweets,
+    sentiment: state.entities.sentiment,
     watsonDocTones: state.entities.watson.documentTones,
     watsonSentenceTones: state.entities.watson.sentenceTones,
     loader: state.ui.loader
