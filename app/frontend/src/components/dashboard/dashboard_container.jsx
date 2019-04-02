@@ -76,18 +76,18 @@ class DashboardContainer extends Component {
       const blueBorder = 'rgba(53, 0, 212, 1)';
       // const none = 'rgba(0, 0, 0, 0)';
       
-      const [tones, toneData] = this.getRadarGraphData(this.getSentenceTones());
-      localStorage.tones = JSON.stringify(tones);
-      localStorage.toneData = JSON.stringify(toneData);
+      [this.tones, this.toneData] = this.getRadarGraphData(this.getSentenceTones());
+      localStorage.tones = JSON.stringify(this.tones);
+      localStorage.toneData = JSON.stringify(this.toneData);
       // const res = this.getTweetsWithTones();
 
       this.setState({
         radarGraphData: {
-          labels: tones,
+          labels: this.tones,
           datasets: [
             {
               label: 'hashtag 1', // hashtag searched
-              data: toneData,
+              data: this.toneData,
               borderColor: blue,
               lineTension: 0,
               borderWidth: 2,
@@ -100,10 +100,10 @@ class DashboardContainer extends Component {
           ]
         }, 
         doughnutGraphData: {
-          labels: tones,
+          labels: this.tones,
           datasets: [
             {
-              data: toneData,
+              data: this.toneData,
               hoverBorderColor: [
                 blueBorder,
                 purpleLowOpac, 
@@ -187,8 +187,11 @@ class DashboardContainer extends Component {
       }
       return res;
     };
-
-    const [tones, toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
+    
+    // debugger
+    if (localStorage.tones !== undefined && localStorage.toneData !== undefined) {
+      [this.tones, this.toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
+    }
 
     this.setState({
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
@@ -276,12 +279,12 @@ class DashboardContainer extends Component {
 
       //radar graph (response to hashtag by sentiment category)
       radarGraphData: {
-        labels: tones, // (sentiment category)
+        labels: this.tones, // (sentiment category)
         // labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
         datasets: [
           {
             label: 'hashtag 1', // hashtag searched
-            data: toneData, // (sentiment value)
+            data: this.toneData, // (sentiment value)
             // data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
             borderColor: blue,
             lineTension: 0,
@@ -294,7 +297,7 @@ class DashboardContainer extends Component {
           },
           {
             label: "hashtag 2",
-            data: toneData,
+            data: this.toneData,
             // data: [35, 19, 32, 75, 32, 62, 15],
             borderColor: purple,
             lineTension: 0,
@@ -310,11 +313,11 @@ class DashboardContainer extends Component {
 
       //doughnut graph (distribution of sentiment over 100 tweets)
       doughnutGraphData: {
-        labels: tones, // sentiment categories
+        labels: this.tones, // sentiment categories
         // labels: ['sad','happy','angst'], // sentiment categories
         datasets: [
           {
-            data: toneData, // (sentiment count by category)
+            data: this.toneData, // (sentiment count by category)
             // data: [19, 73, 72], // (sentiment count by category)
             hoverBorderColor: [
               blueBorder,
