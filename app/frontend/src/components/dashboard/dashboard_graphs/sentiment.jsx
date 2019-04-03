@@ -7,15 +7,8 @@ class SentGraph extends Component { // bar graph
         this.state = {
             graphData: this.props.graphData
         };
-        
-        this.test = this.state.graphData.map((el, idx) => {
-            return (
-                <li key={idx}>
-                    {el.words}
-                </li>
-            )
-        });
-        this.scores = this.state.graphData.map((el, idx) => {
+
+        this.scores = this.state.graphData.map((el) => {
             return el.score;
         });
     }
@@ -78,7 +71,7 @@ class SentGraph extends Component { // bar graph
         const data = this.transformScores();
         return (
             <div className="sentGraph">
-                <li>Score: {this.averages().score}</li>
+                <li className="descriptive">Score: {this.averages().score}</li>
                 <li>Comparative: {this.averages().comparative}</li>
                 <li>Max Score: {this.averages().maxScore}</li>
                 <li>Max Comparative: {this.averages().maxComparative}</li>
@@ -132,8 +125,6 @@ class SentGraph extends Component { // bar graph
                         }
                     }}
                 />
-                {/* {this.chart()}
-                <svg id="svg"></svg> */}
             </div>
         )
     }

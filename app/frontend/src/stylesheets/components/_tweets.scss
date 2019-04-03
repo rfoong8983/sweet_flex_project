@@ -1,0 +1,28 @@
+.tweets {
+    border-radius: 4px;
+    padding: 8px;
+    color: #fff;
+    border: 1px solid rgb(52, 1, 154);
+    // background: rgb(254, 254, 254);
+    background: rgb(5, 2, 21);
+}
+
+.tweets:hover {
+    border: 1px solid rgb(73,0,218);
+    // box-shadow
+}
+
+.tweet-index {
+    // border-radius: 4px;
+    color: #fff;
+    // background: rgb(5, 2, 21);
+    background: rgb(8, 3, 36);
+    // transition: ease 0.2s;
+    margin-bottom: 2px;
+}
+.tweet-index:hover {
+    border-radius: 4px;
+    background: rgb(128, 128, 128);
+    color: rgb(8, 3, 36);
+    border: 1px solid gray;
+}
