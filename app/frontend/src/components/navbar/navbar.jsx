@@ -49,7 +49,6 @@ class NavBar extends React.Component {
   }
       
   handleKeyPress(e) {
-    // debugger
     if (e.key === 'Enter') {
       // console.log(this.state.search);
       this.props.search(this.state.search);
