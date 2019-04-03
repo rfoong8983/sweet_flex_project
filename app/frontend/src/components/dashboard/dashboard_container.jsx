@@ -131,6 +131,23 @@ class DashboardContainer extends Component {
           ]
         },
         sentGraphData: this.sentiment,
+        barGraphData: {
+          labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
+          datasets: [
+            {
+              label: 'Score', // bar name
+              data: [100, 200, 300, 400], // y-axis
+              backgroundColor: barCount(4, blue), // this.props.data.length
+              borderColor: barCount(4, blueBorder),
+            },
+            {
+              label: "Count",
+              data: [200, 300, 120, 60],
+              backgroundColor: barCount(4, purple),
+              borderColor: barCount(4, purpleBorder),
+            }
+          ]
+        },
         scatterGraphData: {
         labels: ['mon','tues','weds','thurs','fri','sat','sun'], // x-axis (time data)
           datasets: [
@@ -170,6 +187,7 @@ class DashboardContainer extends Component {
             }
           ],
         },
+
       });
     }
   }
@@ -253,13 +271,13 @@ class DashboardContainer extends Component {
         labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
         datasets: [
           {
-            label: 'Population', // bar name
+            label: 'Score', // bar name
             data: [100, 200, 300, 400], // y-axis
             backgroundColor: barCount(4, blue), // this.props.data.length
             borderColor: barCount(4, blueBorder),
           },
           {
-            label: "Hype",
+            label: "Count",
             data: [200, 300, 120, 60],
             backgroundColor: barCount(4, purple),
             borderColor: barCount(4, purpleBorder),
@@ -377,7 +395,7 @@ class DashboardContainer extends Component {
                 </div>
                 <div className="flex-col-center">
                   <div className="topTwoCharts">
-                    <ScatterGraph graphData={this.state.scatterGraphData} />
+                    {/* <ScatterGraph graphData={this.state.scatterGraphData} /> */}
                     {/* <BarGraph graphData={this.state.barGraphData} /> */}
                     <SentGraph graphData={this.state.sentGraphData} />
                   </div>
