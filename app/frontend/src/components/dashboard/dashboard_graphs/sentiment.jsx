@@ -58,7 +58,8 @@ class SentGraph extends Component { // bar graph
                     {
                         label: 'Raw Sentiment Score', // bar name
                         data: Object.values(binned), // y-axis
-                        backgroundColor: 'blue'
+                        // backgroundColor: 'rgb(25, 40, 205)'
+                        backgroundColor: 'rgb(113, 74, 227)'
                     },
                 ]
         }
@@ -68,63 +69,77 @@ class SentGraph extends Component { // bar graph
 
     render() {
         const gray = "rgba(40, 40, 40, 1)";
+        const lightgray = "rgb(196, 196, 196)";
         const data = this.transformScores();
         return (
             <div className="sentGraph">
-                <li className="descriptive">Score: {this.averages().score}</li>
-                <li>Comparative: {this.averages().comparative}</li>
-                <li>Max Score: {this.averages().maxScore}</li>
-                <li>Max Comparative: {this.averages().maxComparative}</li>
-                <li>Min Score: {this.averages().minScore}</li>
-                <li>Min Comparative: {this.averages().minComparative}</li>
-                <Bar
-                    data={data}
-                    options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    display: false,
-                                    color: gray
-                                },
-                                ticks: {
-                                    fontFamily: "Roboto Condensed",
-                                    fontStyle: "400",
-                                    fontSize: 12
-                                }
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    display: false,
-                                    color: gray
-                                },
-                                ticks: {
-                                    fontFamily: "Roboto Condensed",
-                                    fontStyle: "400",
-                                    fontSize: 12
-                                }
-                            }]
-                        },
-                        title: {
-                            display: true,
-                            text: "Distribution of Sentiment",
-                            // fontSize: 25,
-                            fontFamily: "Roboto Condensed",
-                            fontStyle: "400",
-                            fontSize: 20
-                        },
-                        legend: {
-                            display: true,
-                            position: 'bottom',
-                            labels: {
+                <ul className="comparative">
+                    <li className="descriptive">Avg Score: {this.averages().score}</li>
+                    <li className="descriptive">Max Score: {this.averages().maxScore}</li>
+                    <li className="descriptive">Min Score: {this.averages().minScore}</li>
+                    <br></br>
+                    <li className="descriptive">Avg Comparative: {this.averages().comparative.toFixed(2)}</li>
+                    <li className="descriptive">Max Comparative: {this.averages().maxComparative.toFixed(2)}</li>
+                    <li className="descriptive">Min Comparative: {this.averages().minComparative.toFixed(2)}</li>
+                </ul>
+                
+
+                <div className="histogram">
+                    <Bar
+                        data={data}
+                        options={{
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        display: false,
+                                        color: gray
+                                    },
+                                    ticks: {
+                                        fontFamily: "Roboto Condensed",
+                                        fontStyle: "400",
+                                        fontSize: 12,
+                                        fontColor: lightgray
+                                    }
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        display: false,
+                                        color: gray
+                                    },
+                                    ticks: {
+                                        fontFamily: "Roboto Condensed",
+                                        fontStyle: "400",
+                                        fontSize: 12,
+                                        fontColor: lightgray
+                                    }
+                                }]
+                            },
+                            title: {
+                                display: true,
+                                text: "Distribution of Sentiment",
+                                // fontSize: 25,
                                 fontFamily: "Roboto Condensed",
                                 fontStyle: "400",
-                                fontSize: 12,
+                                fontSize: 20,
+                                fontColor: lightgray
+                            },
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    fontFamily: "Roboto Condensed",
+                                    fontStyle: "400",
+                                    fontSize: 12,
+                                    boxWidth: 12,
+                                    fontColor: lightgray
+                                }
                             }
-                        }
-                    }}
-                />
+                        }}
+                    />
+                </div>
+
             </div>
         )
     }

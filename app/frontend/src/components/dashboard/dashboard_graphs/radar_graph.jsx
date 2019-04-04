@@ -5,8 +5,9 @@ class RadarGraph extends Component{
   render(){
     const gray = "rgba(40, 40, 40, 1)";
     // const white = "rgba(255,255,255,0.9";
+    const lightgray = 'rgb(196,196,196)';
     return(
-        <div className="graph-size">
+        <div className="radar">
           <Radar
             data={this.props.graphData}
             options={{
@@ -21,23 +22,26 @@ class RadarGraph extends Component{
                 },
                 ticks: {
                   backdropColor: "black",
-                  fontSize: 10
+                  fontSize: 10,
+                  fontColor: lightgray
                 },
                 pointLabels: {
                   fontSize: 13,
                   fontFamily: "Roboto Condensed",
                   fontStyle: "400",
+                  fontColor: lightgray
                 }
               },
               responsive: true,
               maintainAspectRatio: false,
               title:{
                 display: true,
-                text:"Radar Graph",
+                text:"Concentration of Emotions",
                 // fontSize: 25,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20,
+                fontColor: lightgray
               },
               legend: {
                 display: true,
@@ -46,7 +50,9 @@ class RadarGraph extends Component{
                   fontFamily: "Roboto Condensed",
                   fontStyle: "400",
                   fontSize: 12,
-                  fontColor: "gray"
+                  fontColor: "gray",
+                  boxWidth: 12,
+                  fontColor: lightgray
                 }
               }
             }}

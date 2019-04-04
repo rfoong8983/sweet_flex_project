@@ -18,7 +18,7 @@ class TweetList extends React.Component {
             tweets = 
                 this.tweets.map((tweet,idx) => {
                     return (
-                        <li key={idx} className="tweet-index"> 
+                        <li key={idx} className="tweet-item"> 
                             {tweet.fullText}
                         </li>
                     ) 
@@ -26,8 +26,8 @@ class TweetList extends React.Component {
         } else if (localStorage.tweets !== undefined) { // use tweets that have been previously stored in localStorage from prior search
             tweets = JSON.parse(localStorage.getItem('tweets')).map((tweet, idx) => {
                 return (
-                    <li key={idx} className="tweet-index">
-                        {tweet.fullText}
+                    <li key={idx} className="tweet-item">
+                        <a className="tweetBody">{tweet.fullText}</a>
                     </li>
                 )
             })
