@@ -235,7 +235,7 @@ class DashboardContainer extends Component {
     } else {
       this.sentiment = JSON.parse(localStorage.sentiment);
     }
-    debugger
+    
     this.setState({
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
