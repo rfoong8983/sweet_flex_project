@@ -230,10 +230,12 @@ class DashboardContainer extends Component {
       [this.tones, this.toneData] = [JSON.parse(localStorage.tones), JSON.parse(localStorage.toneData)];
     }
 
-    if (localStorage.sentiment !== undefined) {
-      this.sentiment = localStorage.sentiment;
+    if (localStorage.sentiment === undefined) {
+      this.sentiment = [];
+    } else {
+      this.sentiment = JSON.parse(localStorage.sentiment);
     }
-
+    debugger
     this.setState({
       // bar graph (avg sentiment over 100 tweets for specific hashtag)
       scatterGraphData: { 
@@ -274,7 +276,7 @@ class DashboardContainer extends Component {
           }
         ],
       },
-      sentGraphData: JSON.parse(this.sentiment),
+      sentGraphData: this.sentiment,
       barGraphData: {
         labels: ['Boston', "San Francisco", "Los Angeles", "New York"], // x-axis
         datasets: [
