@@ -91,13 +91,13 @@ class DashboardContainer extends Component {
       localStorage.toneData = JSON.stringify(this.toneData);
       this.sentiment = this.props.sentiment;
       localStorage.sentiment = JSON.stringify(this.sentiment);
-
+      
       this.setState({
         radarGraphData: {
           labels: this.tones,
           datasets: [
             {
-              label: 'hashtag 1', // hashtag searched
+              label: localStorage.lastSearch, // hashtag searched
               data: this.toneData,
               borderColor: blue,
               lineTension: 0,
@@ -114,16 +114,24 @@ class DashboardContainer extends Component {
           labels: this.tones,
           datasets: [
             {
-              data: this.toneData,
-              hoverBorderColor: [
-                blueBorder,
-                purpleLowOpac, 
-                blue
-              ],
+              data: this.toneData, // (sentiment count by category)
+              // data: [19, 73, 72], // (sentiment count by category)
+              // hoverBorderColor: [
+              //   blueBorder,
+              //   purpleLowOpac, 
+              //   blue
+              // ],
               backgroundColor: [
-                blueLowOpac,
-                purpleLowOpac,
-                blue,
+                'rgba(53, 0, 212, 0.2)',
+                'rgba(53, 0, 212, 0.5)',
+                'rgba(53, 0, 212, 0.8)',
+                'rgba(118, 90, 234, 0.5)',
+                'rgba(118, 90, 234, 1)',
+                'rgba(118, 60, 234, 1)',
+                'rgba(118, 60, 234, 0.5)'
+                // blueLowOpac,
+                // purpleLowOpac,
+                // blue,
               ],
               hoverBorderWidth: 2,
               borderWidth: 0,
@@ -317,7 +325,7 @@ class DashboardContainer extends Component {
         // labels: ['sad','happy','angst','envy','pride','love','anger',"joy", "shock"], // (sentiment category)
         datasets: [
           {
-            label: 'hashtag 1', // hashtag searched
+            label: localStorage.lastSearch, // hashtag searched
             data: this.toneData, // (sentiment value)
             // data: [19, 73, 72, 54, 32, 35, 80], // (sentiment value)
             borderColor: blue,
@@ -329,19 +337,6 @@ class DashboardContainer extends Component {
             pointBorderWidth: 2,
             pointRadius: 3
           },
-          {
-            label: "hashtag 2",
-            data: this.toneData,
-            // data: [35, 19, 32, 75, 32, 62, 15],
-            borderColor: purple,
-            lineTension: 0,
-            borderWidth: 2,
-            backgroundColor: purpleLowOpac,
-            pointBackgroundColor: "black",
-            pointBorderColor: purpleBorder,
-            pointBorderWidth: 2,
-            pointRadius: 3
-          }
         ]
       },
 
@@ -353,15 +348,22 @@ class DashboardContainer extends Component {
           {
             data: this.toneData, // (sentiment count by category)
             // data: [19, 73, 72], // (sentiment count by category)
-            hoverBorderColor: [
-              blueBorder,
-              purpleLowOpac, 
-              blue
-            ],
+            // hoverBorderColor: [
+            //   blueBorder,
+            //   purpleLowOpac, 
+            //   blue
+            // ],
             backgroundColor: [
-              blueLowOpac,
-              purpleLowOpac,
-              blue,
+              'rgba(53, 0, 212, 0.2)',
+              'rgba(53, 0, 212, 0.5)',
+              'rgba(53, 0, 212, 0.8)',
+              'rgba(118, 90, 234, 0.5)',
+              'rgba(118, 90, 234, 1)',
+              'rgba(118, 60, 234, 1)',
+              'rgba(118, 60, 234, 0.5)'
+              // blueLowOpac,
+              // purpleLowOpac,
+              // blue,
             ],
             hoverBorderWidth: 2,
             borderWidth: 0,
@@ -374,11 +376,14 @@ class DashboardContainer extends Component {
   render() {
     if (this.props.loader) {
       return (
-        <Loader 
-          type="Puff"
-          color="#00BFFF"
-          height="100"	
-          width="100" />   
+        <div className="loader">
+          <Loader
+            type="Puff"
+            color="#00BFFF" 
+            height="400px"
+            width="400px"
+            /> 
+        </div>
       );
     } else {
       return (
@@ -386,13 +391,14 @@ class DashboardContainer extends Component {
           <div className="dashboard-container">
 
             <div className="dashboard">
+              <div className="dashboard-text">{`${localStorage.lastSearch}`} sentiment data</div>
+              {/* <div className="dashboard-text">Sentiment Analysis</div> */}
 
-              
-              <div className="dashboard-text">#Hashtag Analysis</div>
               <div className="body-wrap">
                 <div className="flex-col-left">
                   <TweetList />
                 </div>
+                
                 <div className="flex-col-center">
                   <div className="topTwoCharts">
                     {/* <ScatterGraph graphData={this.state.scatterGraphData} /> */}
@@ -407,8 +413,8 @@ class DashboardContainer extends Component {
                     <DoughnutGraph graphData={this.state.doughnutGraphData} />
                   </div>
                 </div>
-
               </div>
+              
 
             </div>
           </div>

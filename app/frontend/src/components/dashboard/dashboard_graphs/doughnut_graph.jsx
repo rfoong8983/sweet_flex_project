@@ -10,9 +10,10 @@ class DoughnutGraph extends Component{
   
   render() {
     // const white = "rgba(255,255,255,0.9";
+    const lightgray = 'rgb(196,196,196)';
 
     return(
-        <div className="graph-size">
+        <div className="donut">
           <Doughnut
             data={this.props.graphData}
             options={{
@@ -20,11 +21,12 @@ class DoughnutGraph extends Component{
               maintainAspectRatio: false,
               title:{
                 display: true,
-                text:"Doughnut Graph",
+                text:"Breakdown of Emotions",
                 // fontSize: 50,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
                 fontSize: 20,
+                fontColor: lightgray
               },
               legend: {
                 display: true,
@@ -33,6 +35,8 @@ class DoughnutGraph extends Component{
                   fontFamily: "Roboto Condensed",
                   fontStyle: "400",
                   fontSize: 12,
+                  boxWidth: 12,
+                  fontColor: lightgray
                 }
               }
             }}

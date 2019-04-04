@@ -10,6 +10,7 @@ class LineGraph extends Component{
   }
 
   render(){
+    const lightgray = 'rgb(196,196,196)';
     return(
         <div className="graph-size">
           <Line
@@ -24,7 +25,8 @@ class LineGraph extends Component{
                   ticks: {
                     fontFamily: "Roboto Condensed",
                     fontStyle: "400",
-                    fontSize: 12
+                    fontSize: 12,
+                    fontColor: lightgray
                   }
                 }],
                 yAxes: [{
@@ -34,7 +36,8 @@ class LineGraph extends Component{
                   ticks: {
                     fontFamily: "Roboto Condensed",
                     fontStyle: "400",
-                    fontSize: 12
+                    fontSize: 12,
+                    fontColor: lightgray
                   }
                 }]
               },
@@ -46,7 +49,8 @@ class LineGraph extends Component{
                 // fontSize: 25,
                 fontFamily: "Roboto Condensed",
                 fontStyle: "400",
-                fontSize: 20
+                fontSize: 20,
+                fontColor: lightgray
               },
               legend: {
                 display: false,

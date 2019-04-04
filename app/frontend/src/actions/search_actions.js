@@ -102,6 +102,7 @@ export const fetchWatsonData = (text, timer) => dispatch => (
 );
 
 export const receiveSearch = searchData => dispatch => {
+  localStorage.lastSearch = searchData;
   SearchAPIUtil.saveSearch(searchData)
     .then(searchData => dispatch(receiveSearchData(searchData)))
     .then(() => dispatch(fetchTwitterData(searchData)))

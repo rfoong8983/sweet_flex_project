@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Unica+One");
 
+.loader {
+  margin-top: 120px;
+}
+
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-wrap {
+  display: flex;
+  justify-content: center;
+}
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -8,50 +24,132 @@
 
 .body-wrap {
   display: flex;
+  height: 100%;
 }
 
 .radar-donut-wrap {
   display: flex;
 }
 
-.tweets {
-  width: 100%;
-  height: 70vh;
-  overflow: scroll;
-}
-
 .topTwoCharts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  height: 100%;
+  font-family: $roboto-condensed;
+  font-weight: 200;
 }
 
 .flex-col-left{
-  width: 37%;
-  padding: 0 40px;
+  width: 34%;
+  padding: 0 20px 0 40px;
+  display: flex;
 }
 
 .sentGraph {
   color: #fff;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.flex-col-center{
+.comparative {
+  height: 45%;
+  border-radius: 4px;
+  border: 1px solid rgba(52, 1, 154,0.6);
+  transition: ease-in 0.15s;
+  padding: 10px;
+  color: rgb(196, 196, 196);
+}
+.comparative:hover {
+    color: #fff;
+    border: 1px solid rgba(196, 196, 196, 0.413);
+}
+
+.histogram {
+  padding-top: 12px;
+  height: 45%;
+}
+.histogram canvas {
+  border-radius: 4px;
+  border: 1px solid rgba(52, 1, 154,0.6);
+  transition: ease-in 0.15s;
+  padding: 12px;
+}
+
+.comparative:hover {
+  border: 1px solid rgb(73,0,218);
+}
+
+.histogram canvas:hover {
+  border: 1px solid rgb(73,0,218);
+}
+
+.flex-col-center {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
+  padding-right: 20px;
+}
+
+.flex-col-right {
+  overflow: hidden;
+  // height: 65vh;
 }
 
 .graph-size {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 350px;
-  // margin: 30px;
+  height: 45%;
 }
+
+.graph-size canvas {
+  transition: ease-in 0.15s;
+  border-radius: 4px;
+  padding: 10px 10px 28px 10px;
+  border: 1px solid rgba(52, 1, 154,0.6);
+}
+.graph-size canvas:hover {
+  border: 1px solid rgb(73,0,218);
+}
+
+.radar-donut-wrap {
+  height: 45%;
+  margin-top: 34px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.radar canvas{
+  border-radius: 4px;
+  transition: ease-in 0.15s;
+  height: 100%;
+  width: 50%;
+  border-top: 1px solid rgba(52, 1, 154,0.6);
+  border-left: 1px solid rgba(52, 1, 154,0.6);
+  border-bottom: 1px solid rgba(52, 1, 154,0.6);
+  padding: 12px 10px 12px 0;
+}
+.donut canvas{
+  border-radius: 4px;
+  transition: ease-in 0.15s;
+  height: 100%;
+  width: 50%;
+  border-top: 1px solid rgba(52, 1, 154,0.6);
+  border-right: 1px solid rgba(52, 1, 154,0.6);
+  border-bottom: 1px solid rgba(52, 1, 154,0.6);
+  padding: 12px 0 12px 10px;
+}
+.radar canvas:hover{
+  border: 1px solid rgb(73,0,218);
+  // border-top: 1px solid rgb(73,0,218);
+  // border-left: 1px solid rgb(73,0,218);
+  // border-bottom: 1px solid rgb(73,0,218);
+}
+.donut canvas:hover{
+  border: 1px solid rgb(73,0,218);
+  // border-top: 1px solid rgb(73,0,218);
+  // border-right: 1px solid rgb(73,0,218);
+  // border-bottom: 1px solid rgb(73,0,218);
+}
+
 
 .dashboard-text {
   display: flex;
@@ -64,7 +162,8 @@
   font-weight: 300;
   font-family: "Roboto Condensed";
   font-weight: 400;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 20px 0;
   // margin: 30px 0px;
-  color: white;
+  // color: grey;
+  color: rgba(255, 255, 255, 0.913);
 }
