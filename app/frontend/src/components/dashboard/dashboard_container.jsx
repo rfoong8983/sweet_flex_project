@@ -381,7 +381,7 @@ class DashboardContainer extends Component {
         <div className="loader">
           <Loader
             type="Puff"
-            color="#00BFFF" 
+            color="#7049E2" 
             height="400px"
             width="400px"
             /> 
