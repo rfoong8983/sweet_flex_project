@@ -76,42 +76,42 @@ class NavBar extends React.Component {
   render () {
     return (
 
-      <div>
-      <div className="navbar-container-wrap flex-center-row">
-        <div className="navbar-container flex-center-spread">
-        <div className="navbar-logo flex-left-row">
-          <h1 className="navbar-logo-h1" onClick={this.toHome()}>sweet</h1>
-        </div>
-        <input 
-            className="navbar-search"
-            onChange={this.handleUpdate('search')}
-            onKeyPress={this.handleKeyPress}
-            placeholder="#sweeeeet">
-        </input>
-        <div className="navbar-buttons flex-right-row">
-          <div className="profile flex-center">
-          <a href="#" className="navbar-button-style" 
-            onClick={this.props.currentUser.username ? this.pushToProfile : this.handleLogout}>
-            {this.props.currentUser ? 
-            <div className="navbar-buttons-style">
-              <div href="#" className="navbar-button-style">
-              {this.props.currentUser.username}
-              </div>
-            </div> :""}
-          </a>
+      <div className ="navbar-main-container-wrap">
+        <div className="navbar-container-wrap flex-center-row">
+          <div className="navbar-container flex-center-spread">
+          <div className="navbar-logo flex-left-row">
+            <h1 className="navbar-logo-h1" onClick={this.toHome()}>sweet</h1>
           </div>
+          <input 
+              className="navbar-search"
+              onChange={this.handleUpdate('search')}
+              onKeyPress={this.handleKeyPress}
+              placeholder="#sweeeeet">
+          </input>
+          <div className="navbar-buttons flex-right-row">
+            <div className="profile flex-center">
+            <a href="#" className="navbar-button-style" 
+              onClick={this.props.currentUser.username ? this.pushToProfile : this.handleLogout}>
+              {this.props.currentUser ? 
+              <div className="navbar-buttons-style">
+                <div href="#" className="navbar-button-style">
+                {this.props.currentUser.username}
+                </div>
+              </div> :""}
+            </a>
+            </div>
 
-          {this.props.currentUser.username ?
-          <div className="logout flex-center">
-            <a href="#" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
-          </div> : 
-          <div className="logout flex-center">
-            <a href="#" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
-          </div>}
+            {this.props.currentUser.username ?
+            <div className="logout flex-center">
+              <a href="#" className="navbar-button-style" onClick={this.handleLogout}>LOGOUT</a>
+            </div> : 
+            <div className="logout flex-center">
+              <a href="#" className="navbar-button-style" onClick={this.openModal}>LOGIN</a>
+            </div>}
 
+          </div>
+          </div>
         </div>
-        </div>
-      </div>
       </div>
     )
   }

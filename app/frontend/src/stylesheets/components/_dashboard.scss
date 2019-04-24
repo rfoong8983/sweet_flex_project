@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 1300px;
 }
 
 .body-wrap {
@@ -38,9 +39,30 @@
 }
 
 .flex-col-left{
-  width: 34%;
-  padding: 0 20px 0 40px;
+  width: 33%;
+  padding: 0 20px 0 0;
+  // padding: 0 20px 0 40px;
   display: flex;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding-right: 20px;
+  width: 33%;
+}
+
+.flex-col-right {
+  // overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 33%;
+  // height: 65vh;
 }
 
 .sentGraph {
@@ -82,20 +104,6 @@
   border: 1px solid rgb(73,0,218);
 }
 
-.flex-col-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  padding-right: 20px;
-}
-
-.flex-col-right {
-  overflow: hidden;
-  // height: 65vh;
-}
-
 .graph-size {
   height: 45%;
 }
@@ -117,6 +125,10 @@
   justify-content: space-between;
 }
 
+.radar, .donut {
+  height: 50%;
+}
+
 .radar canvas{
   border-radius: 4px;
   transition: ease-in 0.15s;
@@ -125,6 +137,7 @@
   border-top: 1px solid rgba(52, 1, 154,0.6);
   border-left: 1px solid rgba(52, 1, 154,0.6);
   border-bottom: 1px solid rgba(52, 1, 154,0.6);
+  border-right: 1px solid rgba(52, 1, 154,0.6);
   padding: 12px 10px 12px 0;
 }
 .donut canvas{
@@ -135,6 +148,7 @@
   border-top: 1px solid rgba(52, 1, 154,0.6);
   border-right: 1px solid rgba(52, 1, 154,0.6);
   border-bottom: 1px solid rgba(52, 1, 154,0.6);
+  border-left: 1px solid rgba(52, 1, 154,0.6);
   padding: 12px 0 12px 10px;
 }
 .radar canvas:hover{

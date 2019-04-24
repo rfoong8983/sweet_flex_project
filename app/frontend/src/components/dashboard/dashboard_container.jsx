@@ -409,11 +409,11 @@ class DashboardContainer extends Component {
                   </div>
                 </div>
                 <div className="flex-col-right">
-                  <LineGraph graphData={this.state.lineGraphData} />
-                  <div className="radar-donut-wrap">
-                    <RadarGraph graphData={this.state.radarGraphData} />
-                    <DoughnutGraph graphData={this.state.doughnutGraphData} />
-                  </div>
+                  {/* <LineGraph graphData={this.state.lineGraphData} /> */}
+                  {/* <div className="radar-donut-wrap"> */}
+                  <RadarGraph graphData={this.state.radarGraphData} />
+                  <DoughnutGraph graphData={this.state.doughnutGraphData} />
+                  {/* </div> */}
                 </div>
               </div>
               
