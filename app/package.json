@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/rfoong8983/sweet_flex_project#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chart.js": "^2.7.3",
