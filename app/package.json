@@ -60,7 +60,7 @@
     "redux-thunk": "^2.3.0",
     "sentiment": "^5.0.1",
     "twit": "^2.2.11",
-    "validator": "^10.11.0",
+    "validator": "^13.7.0",
     "watson-developer-cloud": "^3.18.1"
   }
 }
